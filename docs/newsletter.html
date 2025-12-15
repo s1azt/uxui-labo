@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外国人から見た日本のWebサイト | これは私が慣れ親しんだ世界じゃない！</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            line-height: 1.8;
+            color: #fff;
+            background: #0f0a1e;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 3D Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Animated gradient overlay - Orange/Yellow theme */
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(251, 146, 60, 0.3), transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(234, 179, 8, 0.3), transparent 50%),
+                        radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.2), transparent 50%);
+            z-index: -1;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.8; transform: scale(1.1) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            text-align: center;
+            padding: 100px 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 146, 60, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(251, 146, 60, 0.37);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(251, 146, 60, 0.1), 
+                transparent);
+            animation: headerShine 3s linear infinite;
+        }
+
+        @keyframes headerShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #fb923c 0%, #f59e0b 50%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        .author-info {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: rgba(251, 146, 60, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Section Cards */
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 50px;
+            margin-bottom: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .section:hover::before {
+            left: 100%;
+        }
+
+        .section:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 60px 0 rgba(251, 146, 60, 0.3);
+            border-color: rgba(251, 146, 60, 0.2);
+        }
+
+        /* Icon-based Section Marker */
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(251, 146, 60, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .section:hover .section-icon {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #fff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1em;
+            line-height: 1.9;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(251, 146, 60, 0.3) 0%, rgba(234, 179, 8, 0.3) 100%);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #fbbf24;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Info boxes with orange/yellow theme */
+        .culture-shock {
+            background: rgba(239, 68, 68, 0.15);
+            backdrop-filter: blur(20px);
+            border-left: 4px solid #fb923c;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .comparison {
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(20px);
+            border-left: 4px solid #3b82f6;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .insight {
+            background: rgba(34, 197, 94, 0.15);
+            backdrop-filter: blur(20px);
+            border-left: 4px solid #22c55e;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);
+        }
+
+        .comparison-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        .emoji {
+            font-size: 1.8em;
+            margin: 0 8px;
+            display: inline-block;
+            animation: emojiFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        .quote {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.2) 0%, rgba(234, 179, 8, 0.2) 100%);
+            backdrop-filter: blur(30px);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border-left: 5px solid #fb923c;
+            font-size: 1.3em;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 5em;
+            color: rgba(251, 146, 60, 0.3);
+            font-family: Georgia, serif;
+        }
+
+        ul {
+            margin: 30px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1em;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        li::marker {
+            color: #fb923c;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 700;
+            margin-left: 15px;
+            box-shadow: 0 5px 20px rgba(251, 146, 60, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(234, 179, 8, 0.15) 100%);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .intro-box p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 15px;
+        }
+
+        /* Scroll indicator - orange theme */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fb923c, #f59e0b, #eab308);
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+
+        .metaphor-box {
+            background: rgba(168, 85, 247, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 35px;
+            margin: 30px 0;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-left: 5px solid #a855f7;
+        }
+
+        strong {
+            color: #fbbf24;
+        }
+
+        .link-box {
+            background: rgba(59, 130, 246, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .link-box a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .link-box a:hover {
+            color: #93c5fd;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="gradient-overlay"></div>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <div class="container">
+        <header>
+            <h1>🌏 これは私が慣れ親しんだ世界じゃない！！！</h1>
+            <p class="subtitle">外国人から見た日本のWebサイトのインターフェース</p>
+            <p class="author-info">📝 UXユニット | サーメル</p>
+        </header>
+
+        <!-- Section 1 -->
+        <div class="section" data-aos>
+            <div class="section-icon">👋</div>
+            <h2>はじめまして、そして衝撃の出会い</h2>
+            
+            <div class="intro-box">
+                <p><strong>お疲れ様です！UXユニットのサーメルです！</strong></p>
+                <p>ご存知の方もいるかもしれませんが、今年の6月にYSD初の外国人エンジニアとして入社しました。</p>
+            </div>
+
+            <p>正直、私は日本のことが大好きです。（特にコンビニのおにぎり、あれは発明レベルで最高ですよね！<span class="emoji">🍙</span>）</p>
+
+            <p>でも... 来日して生活する中で、あの人気ラーメン店前の大行列以上に衝撃を受けたことが一つだけあります。</p>
+
+            <div class="quote">
+                それは...「日本のWebサイトのインターフェース」です！
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section" data-aos>
+            <div class="section-icon">🏪</div>
+            <h2>ドン・キホーテ的Webデザイン<span class="badge">文化的ギャップ</span></h2>
+
+            <p>皆さん、「ドン・キホーテ」に行ったことはありますよね？</p>
+
+            <p>あの商品が天井まで積み上げられた、凄まじい情報量と熱気...いわゆる<span class="highlight">「圧縮陳列」</span>。</p>
+
+            <div class="metaphor-box">
+                <p><strong>実は、日本のWebサイトを初めて見た時、まさにあのドンキのような感覚に襲われました。</strong></p>
+                <p>「デザイナーは余白（空白）を残すのが怖いのか！？」と思ってしまうくらい、あらゆる隙間が情報で埋め尽くされている...そんな印象でした<span class="emoji">😅</span></p>
+            </div>
+
+            <h3>🔴 ヤマダデンキショック</h3>
+
+            <p>その最も分かりやすい例が、「ヤマダデンキ」のような家電量販店のサイトを見た時です。</p>
+
+            <div class="culture-shock">
+                <p>赤い文字、点滅するバナー、画面の1ピクセルも無駄にしない情報の密度！</p>
+                <p>まるでサイト全体が<strong>「これ安いよ！」「これも見て！」「ポイントつくよ！」</strong>と、一度に全力で叫んでくるような感覚。</p>
+                <p>正直、どこを見ればいいのか分か���ず、目が泳いでしまいました。</p>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section" data-aos>
+            <div class="section-icon">🍎</div>
+            <h2>Apple vs 日本：対極の世界観</h2>
+
+            <p>これは、私が今まで慣れ親しんできた「Apple」のトップページなどとは、まさに<span class="highlight">正反対の世界</span>なんです。</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>🌍 欧米のWebデザイン</h3>
+                    <ul>
+                        <li>広大な余白（ホワイトスペース）</li>
+                        <li>洗練された静寂</li>
+                        <li>1画面に1メッセージ</li>
+                        <li>ユーザーの認知負荷を最小化</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card">
+                    <h3>🗾 日本のWebデザイン</h3>
+                    <ul>
+                        <li>情報の圧縮陳列</li>
+                        <li>賑やかで活気ある雰囲気</li>
+                        <li>1画面に全てを詰め込む</li>
+                        <li>選択肢の豊富さを重視</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison">
+                <p><strong>欧米のWebデザインは、基本的に「1画面に1メッセージ」というルールに従うことが多いです。</strong></p>
+                <p>徹底的に「ユーザーが頭を使う負担」を減らすことが正義とされています。</p>
+                <p>「ユーザーに情報を探させる」のではなく、<span class="highlight">「必要なものをスッと差し出す」</span>...そんなアプローチが一般的です。</p>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section" data-aos>
+            <div class="section-icon">🏢</div>
+            <h2>Nekonet... ポータルですか、それとも新宿駅ですか？</h2>
+
+            <p>そして、入社初日にPCを受け取り、社内ポータル（Nekonet）を開いた時の<span class="highlight">「真実の瞬間」</span>が訪れました。</p>
+
+            <div class="link-box">
+                <p>📎 Nekonet: <a href="http://tokyo.nekonet.co.jp/" target="_blank">http://tokyo.nekonet.co.jp/</a></p>
+            </div>
+
+            <div class="quote">
+                「情報の洪水」はECサイトだけの話だと思っていたのですが、心の中で「あ、ここも同じ世界だ！」と叫んでしまいました<span class="emoji">😂</span>
+            </div>
+
+            <p>誤解しないでください、Nekonetは<strong>網羅性という意味で素晴らしいシステム</strong>です。社内規定、ニュース、各種リンク...業務に必要な「全て」がそこにあります。</p>
+
+            <div class="metaphor-box">
+                <h3>🚇 新宿駅メタファー</h3>
+                <p>しかし、私のような入社したての外国人社員にとっては、まるで初めて<strong>「新宿駅」</strong>に足を踏み入れたかのような感覚でした。</p>
+                
+                <ul>
+                    <li><strong>先輩社員の方々（地元民）：</strong> 迷路のような構内をスイスイと移動し、ルートを完全に把握</li>
+                    <li><strong>私（観光客）：</strong> 目の前に広がる看板とリンクの森の中で立ち尽くし、数百の選択肢の中から「自分が必要なリンク」を必死に探す</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="section" data-aos>
+            <div class="section-icon">🔄</div>
+            <h2>ブラウザの反復横跳び問題</h2>
+
+            <p>そして、試練はリンクを「見つける」だけでは終わりません。</p>
+
+            <p>ようやく見つけてクリックした瞬間、私が<span class="highlight">「ブラウザの反復横跳び」</span>と呼んでいる新たな技術的冒険が始まります。<span class="emoji">🏃‍♂️</span></p>
+
+            <div class="culture-shock">
+                <h3>典型的なシナリオ：</h3>
+                <ol>
+                    <li>Chromeで作業していたはずが...</li>
+                    <li>リンクを押した瞬間にシステムがEdgeを開くと判断し（Dominoなど）...</li>
+                    <li>承認後に新しいウィンドウが開く...</li>
+                    <li>また別のシステムへジャンプ...</li>
+                </ol>
+                <p><strong>結果：</strong> この絶え間ない切り替えは「思考の連続性」と集中力を断ち切り、体験をスムーズなものではなく「煩わしい」ものにしてしまいます。</p>
+            </div>
+
+            <h3>🎭 UIの多様性問題</h3>
+
+            <p>さらに事態を複雑にしているのは、ジャンプ先の社内システムたちが、それぞれ<span class="highlight">「全く異なる顔（UI）」</span>を持っていることです。</p>
+
+            <div class="comparison">
+                <ul>
+                    <li>あるシステムはモダンな青</li>
+                    <li>別のはレガシーなグレー</li>
+                    <li>ボタンの用語も場所によってバラバラ</li>
+                </ul>
+                <p>新しいシステムを開くたびに、私の脳は<strong>「ここの承認ボタンはどこだ？」</strong>と再学習するための追加コストを支払わなければなりません。</p>
+            </div>
+
+            <div class="culture-shock">
+                <h3>その結果...</h3>
+                <p>本来は自立してバリバリ働きたかったのに、結局はチームメンバーに頼り切りになり、<strong>「すみません、これはどうやるんですか？」</strong>と聞き続けることになってしまいました。<span class="emoji">🙏</span></p>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="section" data-aos>
+            <div class="section-icon">✨</div>
+            <h2>UXユニットの一員になれて幸運です</h2>
+
+            <p>入社から半年が経ち、私も少しずつYSDの一員になれた今では、見え方が変わってきました。</p>
+
+            <div class="insight">
+                <p>以前は「迷路」に見えていたあの画面にも、ベテラン社員の方々が素早く業務をこなすための<span class="highlight">「実用的な価値」</span>があることを、肌で感じられるようになったからです。</p>
+            </div>
+
+            <p>ただ、それでもやはり...<strong>「慣れるまでのハードル」が高い</strong>のも事実ですよね<span class="emoji">😅</span></p>
+
+            <div class="quote">
+                私たちUXユニットが目指しているのは、特定のシステムを直すことだけではありません。
+            </div>
+
+            <div class="insight">
+                <h3>🎯 私たちのビジョン</h3>
+                <p>YSDで働くすべての人が、もっと気持ちよく、もっとスムーズに業務に集中できる...そんな<span class="highlight">「新しい体験」</span>を、組織全体の文化として根付かせていくことです。</p>
+            </div>
+
+            <div class="intro-box">
+                <p><strong>YSD初の外国籍エンジニアとして、私自身の「外部からの視点」を活かし、微力ながらも貢献できれば幸いです。</strong></p>
+                <p>（もし社内で迷子になっている姿を見かけたら、ぜひ優しく声をかけてください！<span class="emoji">🗺️</span>）</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>📝 YSD UXユニット | サーメル</p>
+            <p>このコラムに関するご質問・ご意見は、UXユニットまでお気軽にどうぞ！</p>
+        </footer>
+    </div>
+
+    <script>
+        // Three.js 3D Background with spheres instead of torus
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('bg-canvas'),
+            alpha: true,
+            antialias: true
+        });
+
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.setZ(30);
+
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 3000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 100;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0xfb923c,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Create multiple spheres instead of torus
+        const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+        const sphereMaterial = new THREE.MeshStandardMaterial({ 
+            color: 0xf59e0b,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const sphere1 = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere1.position.set(10, 10, -10);
+        scene.add(sphere1);
+
+        const sphere2 = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere2.position.set(-10, -10, -5);
+        scene.add(sphere2);
+
+        // Lighting
+        const pointLight = new THREE.PointLight(0xfbbf24, 1);
+        pointLight.position.set(5, 5, 5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(pointLight, ambientLight);
+
+        // Animation
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            sphere1.rotation.x += 0.002;
+            sphere1.rotation.y += 0.003;
+            
+            sphere2.rotation.x -= 0.001;
+            sphere2.rotation.y -= 0.004;
+
+            particlesMesh.rotation.y += 0.0005;
+            particlesMesh.rotation.x = mouseY * 0.1;
+            particlesMesh.rotation.y = mouseX * 0.1;
+
+            camera.position.x = mouseX * 2;
+            camera.position.y = mouseY * 2;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(50px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 1s cubic-bezier(0.23, 1, 0.32, 1)';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-aos]').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

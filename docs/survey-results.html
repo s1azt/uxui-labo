@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXUIへの意識アンケート結果 - UXUI Labo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #6366f1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #2563eb, #4f46e5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+
+        .chart-bar {
+            transition: width 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <!-- Animated background pattern -->
+        <div class="fixed inset-0 z-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100"></div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="/index.html" class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">UXUI Labo</span>
+                    </a>
+                    <a href="/index.html" class="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>トップに戻る</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-16 relative z-10">
+            <!-- Header -->
+            <div class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 text-white py-20">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <div class="inline-block bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-4 border border-white/30">
+                            <span class="text-sm font-semibold">2025年11月実施</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black mb-4">UXUIへの意識アンケート結果</h1>
+                        <p class="text-xl text-blue-100">全社的なUX/UI浸透度と関心度を可視化</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Section -->
+            <section class="py-12 relative z-10">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-white/40 shadow-2xl mb-12">
+                        <h2 class="text-3xl font-black text-gray-900 mb-6 text-center">調査概要</h2>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center">
+                                <div class="text-sm text-gray-600 mb-2">実施期間</div>
+                                <div class="font-bold text-xl text-gray-900">2025年11月</div>
+                            </div>
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center">
+                                <div class="text-sm text-gray-600 mb-2">対象</div>
+                                <div class="font-bold text-xl text-gray-900">YSD全社員</div>
+                            </div>
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center">
+                                <div class="text-sm text-gray-600 mb-2">回答者数</div>
+                                <div class="font-bold text-xl text-gray-900">120名以上</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Findings -->
+                    <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-8 sm:p-10 border border-white/40 shadow-xl mb-12">
+                        <h2 class="text-3xl font-black text-gray-900 mb-8 flex items-center gap-3">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            主要な発見
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white font-bold text-xl">1</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-2">全社的に非常に高い関心度</h3>
+                                        <p class="text-gray-700">UX/UIに対する関心が全社的に非常に高く、デザインシステム導入への親和性が確認されました。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white font-bold text-xl">2</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-2">一貫性への強いニーズ</h3>
+                                        <p class="text-gray-700">デザインの一貫性やユーザビリティ向上に対する期待が高く、組織全体でUX品質向上への意識が醸成されています。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white font-bold text-xl">3</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-2">デザインシステム導入への期待</h3>
+                                        <p class="text-gray-700">開発効率化と品質向上を目的としたデザインシステム「Coknock」の導入に対して、高い期待が寄せられています。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Results -->
+                    <div class="space-y-8">
+                        <!-- Question 1 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-white/40 shadow-xl">
+                            <h3 class="font-bold text-xl text-gray-900 mb-6">Q1. UX/UIデザインへの関心度</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">非常に関心がある</span>
+                                        <span class="font-bold text-blue-600">45%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">やや関心がある</span>
+                                        <span class="font-bold text-indigo-600">38%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-indigo-500 to-indigo-600 h-4 rounded-full" style="width: 38%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">どちらでもない</span>
+                                        <span class="font-bold text-purple-600">12%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-purple-500 to-purple-600 h-4 rounded-full" style="width: 12%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">あまり関心がない</span>
+                                        <span class="font-bold text-gray-600">5%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gray-400 h-4 rounded-full" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-100">
+                                <p class="text-sm text-gray-700">
+                                    <span class="font-bold text-blue-600">83%</span>が「関心がある」と回答。全社的にUX/UIへの意識が高いことが明確になりました。
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-white/40 shadow-xl">
+                            <h3 class="font-bold text-xl text-gray-900 mb-6">Q2. デザインシステム導入の必要性</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">非常に必要だと思う</span>
+                                        <span class="font-bold text-blue-600">52%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full" style="width: 52%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">やや必要だと思う</span>
+                                        <span class="font-bold text-indigo-600">35%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-indigo-500 to-indigo-600 h-4 rounded-full" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">どちらでもない</span>
+                                        <span class="font-bold text-purple-600">10%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-purple-500 to-purple-600 h-4 rounded-full" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">あまり必要ないと思う</span>
+                                        <span class="font-bold text-gray-600">3%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gray-400 h-4 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 bg-indigo-50 rounded-lg p-4 border border-indigo-100">
+                                <p class="text-sm text-gray-700">
+                                    <span class="font-bold text-indigo-600">87%</span>がデザインシステムの必要性を認識。開発効率化と一貫性向上への期待が高まっています。
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-white/40 shadow-xl">
+                            <h3 class="font-bold text-xl text-gray-900 mb-6">Q3. 期待する効果（複数回答可）</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">デザインの一貫性向上</span>
+                                        <span class="font-bold text-blue-600">78%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">開発効率の向上</span>
+                                        <span class="font-bold text-indigo-600">72%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-indigo-500 to-indigo-600 h-4 rounded-full" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">ユーザビリティの向上</span>
+                                        <span class="font-bold text-purple-600">68%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-purple-500 to-purple-600 h-4 rounded-full" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">メンテナンス性の向上</span>
+                                        <span class="font-bold text-pink-600">55%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-pink-500 to-pink-600 h-4 rounded-full" style="width: 55%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">チーム間のコミュニケーション改善</span>
+                                        <span class="font-bold text-orange-600">48%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-orange-500 to-orange-600 h-4 rounded-full" style="width: 48%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 bg-purple-50 rounded-lg p-4 border border-purple-100">
+                                <p class="text-sm text-gray-700">
+                                    一貫性、効率性、ユーザビリティの3つが特に重視されており、デザインシステムへの明確な期待が示されています。
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-white/40 shadow-xl">
+                            <h3 class="font-bold text-xl text-gray-900 mb-6">Q4. UX活動への参加意欲</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">積極的に参加したい</span>
+                                        <span class="font-bold text-blue-600">32%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full" style="width: 32%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">機会があれば参加したい</span>
+                                        <span class="font-bold text-indigo-600">51%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-indigo-500 to-indigo-600 h-4 rounded-full" style="width: 51%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">様子を見てから考えたい</span>
+                                        <span class="font-bold text-purple-600">14%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gradient-to-r from-purple-500 to-purple-600 h-4 rounded-full" style="width: 14%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-700">あまり参加したくない</span>
+                                        <span class="font-bold text-gray-600">3%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-4">
+                                        <div class="chart-bar bg-gray-400 h-4 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-100">
+                                <p class="text-sm text-gray-700">
+                                    <span class="font-bold text-blue-600">83%</span>が参加意欲を示しており、研修や勉強会への積極的な参加が期待できます。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next Steps -->
+                    <div class="mt-12 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-8 sm:p-10 border border-white/40 shadow-xl">
+                        <h2 class="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                            今後の展開
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-bold text-lg text-gray-900">研修・勉強会の拡充</h3>
+                                </div>
+                                <p class="text-gray-700">Figma研修やUX勉強会を定期的に開催し、全社的なスキルアップを支援します。</p>
+                            </div>
+
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-bold text-lg text-gray-900">Coknock本格展開</h3>
+                                </div>
+                                <p class="text-gray-700">デザインシステム「Coknock」の機能拡充と、各プロジェクトへの導入を推進します。</p>
+                            </div>
+
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-bold text-lg text-gray-900">伴走支援の強化</h3>
+                                </div>
+                                <p class="text-gray-700">各プロジェクトへのUX視点でのレビューやアドバイスを積極的に提供します。</p>
+                            </div>
+
+                            <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-bold text-lg text-gray-900">継続的な効果測定</h3>
+                                </div>
+                                <p class="text-gray-700">定期的なアンケートで浸透度を測定し、活動の改善に活かします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back to Top -->
+                    <div class="mt-12 text-center">
+                        <a href="/index.html" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-blue-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>トップページに戻る</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold">UXUI Labo</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        ヤマトシステム開発株式会社<br>
+                        グループシステム部 UXユニット
+                    </p>
+                    <p class="text-sm text-gray-500">
+                        © 2025 Yamato System Development Co., Ltd. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Animate chart bars on page load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.style.width = bar.style.width;
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
