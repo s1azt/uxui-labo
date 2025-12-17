@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コラム一覧 - UXUI Labo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #6366f1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #2563eb, #4f46e5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <!-- Animated background pattern -->
+        <div class="fixed inset-0 z-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100"></div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="./index.html" class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">UXUI Labo</span>
+                    </a>
+                    <a href="./index.html" class="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>トップに戻る</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-16 relative z-10">
+            <!-- Header -->
+            <div class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 text-white py-20">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <div class="inline-block bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-4 border border-white/30">
+                            <span class="text-sm font-semibold">コラムアーカイブ</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black mb-4">UXUIコラム一覧</h1>
+                        <p class="text-xl text-blue-100">活動内容紹介・ツール紹介・イベント潜入報告</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columns Section -->
+            <section class="py-12 relative z-10">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <!-- Column 1 - Featured -->
+                        <a href="./coknock-story.html" class="group bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all border-2 border-purple-300">
+                            <div class="aspect-video bg-gradient-to-br from-purple-400 to-pink-500 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Coknock Development" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div class="absolute top-4 right-4">
+                                    <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">注目</span>
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="bg-white/90 text-purple-600 px-3 py-1 rounded-full text-xs font-semibold">2025.11</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">吾</span>
+                                    </div>
+                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">吾田 秀樹</span></span>
+                                </div>
+                                <h3 class="font-bold text-2xl text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
+                                    デザインシステム「Coknock」開発ストーリー
+                                </h3>
+                                <p class="text-gray-600 mb-4">
+                                    なぜ今、デザインシステムが必要なのか？YSDにおけるデザインシステム構築の背景、コンセプト、そして未来への展望を語ります。
+                                </p>
+                                <div class="flex items-center gap-2 text-purple-600 font-semibold">
+                                    <span>続きを読む</span>
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Column 2 -->
+                        <a href="./column1.html" class="group bg-white/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-300">
+                            <div class="aspect-video bg-gradient-to-br from-blue-400 to-indigo-500 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Figma Event" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="bg-white/90 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">2025.11</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">堤</span>
+                                    </div>
+                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">堤 圭佑</span></span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                    Figma Maker Collective Tokyo 2024 参加レポート
+                                </h3>
+                                <p class="text-gray-600 mb-4">
+                                    AI時代のデザイナーの役割とは？Figmaの最新機能やデザインコミュニティの動向について、現地からレポートします。
+                                </p>
+                                <div class="flex items-center gap-2 text-blue-600 font-semibold">
+                                    <span>続きを読む</span>
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Column 3 -->
+                        <a href="./column2.html" class="group bg-white/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-orange-300">
+                            <div class="aspect-video bg-gradient-to-br from-orange-400 to-amber-500 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Japan Culture" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="bg-white/90 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">2025.12</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">S</span>
+                                    </div>
+                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">Samer Salmeh</span></span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+                                    外国人から見た日本のUXUI
+                                </h3>
+                                <p class="text-gray-600 mb-4">
+                                    これは私が慣れ親しんだ世界じゃない！外国人エンジニアの視点から見た、日本のWebサイトの独特な特徴とUX文化について語ります。
+                                </p>
+                                <div class="flex items-center gap-2 text-orange-600 font-semibold">
+                                    <span>続きを読む</span>
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Placeholder for future columns -->
+                        <div class="bg-white/40 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg border border-white/40 border-dashed">
+                            <div class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden flex items-center justify-center">
+                                <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-bold text-xl text-gray-500 mb-3">
+                                    次のコラムをお楽しみに
+                                </h3>
+                                <p class="text-gray-400">
+                                    新しいコラムを準備中です。UX/UIに関する最新の情報や活動レポートを随時更新していきます。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back to Top -->
+                    <div class="mt-12 text-center">
+                        <a href="./index.html#columns" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span class="font-bold">トップページに戻る</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative z-10 bg-gray-900 text-white py-8 mt-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>&copy; 2025 UXUI Labo - YSD UXUI浸透活動ポータルサイト</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

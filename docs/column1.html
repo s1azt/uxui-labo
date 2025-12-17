@@ -19,10 +19,87 @@
             overflow-x: hidden;
         }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #1a202c;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .nav-back:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .nav-back svg {
+            width: 20px;
+            height: 20px;
+        }
+
         .container {
             max-width: 960px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 84px 20px 20px;
         }
 
         header {
@@ -287,6 +364,17 @@
             font-size: 0.95em;
         }
 
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #764ba2;
+        }
+
         .badge {
             display: inline-block;
             background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
@@ -300,6 +388,14 @@
         }
 
         @media (max-width: 768px) {
+            .nav-logo-text {
+                font-size: 1.1em;
+            }
+
+            .nav-back span {
+                display: none;
+            }
+
             h1 {
                 font-size: 1.6em;
             }
@@ -314,6 +410,10 @@
 
             .stat-number {
                 font-size: 2em;
+            }
+
+            .container {
+                padding-top: 84px;
             }
         }
 
@@ -343,6 +443,22 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="./index.html" class="nav-logo">
+                <div class="nav-logo-icon">UX</div>
+                <span class="nav-logo-text">UXUI Labo</span>
+            </a>
+            <a href="./index.html#columns" class="nav-back">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span>トップに戻る</span>
+            </a>
+        </div>
+    </nav>
+    
     <div class="container">
         <header>
             <h1>🎨 【イベントレポ】Figma完全招待制イベント潜入！<br>AI全盛期、私たちの仕事はどう変わる？</h1>
@@ -362,7 +478,7 @@
 
             <p>会場に着くと、すぐ隣のイベントスペースがクラブ仕様になっており、とんでもない<span class="highlight">「パリピの圧」</span>を感じながらの入場となりましたが（笑）、会場内は熱心なデザイナーやエンジニア、PMで満員でした！<span class="emoji">🎉</span></p>
 
-            <video src="./movie/figma-event-venue.mov" controls muted loop playsinline class="event-image"></video></video>
+            <video src="./movie/figma-event-venue.mov" controls muted loop playsinline class="event-image"></video>
         </div>
 
         <!-- Section 2 -->
@@ -393,7 +509,7 @@
                 
                 <p><strong>AIは私たちの仕事を奪うのではなく、デザインの裾野を広げ、全員で「本当に使えるもの」を作るための武器になるんです。</strong></p>
             </div>
-            <video src="./movie/figma-event-venue2.mov" controls muted loop playsinline class="event-image"></video>></video>
+            <video src="./movie/figma-event-venue2.mov" controls muted loop playsinline class="event-image"></video>
         </div>
 
         <!-- Section 3 -->
@@ -515,7 +631,7 @@
         </div>
 
         <footer>
-            <p>📝 YSD UXユニット | 堤</p>
+            <p>📝 YSD UXユニット | 堤 圭佑</p>
             <p>このニュースレターに関するご質問・ご相談は、UXユニットまでお気軽にどうぞ！</p>
             <a href="https://mail.google.com/mail/u/0/#chat/space/AAQAR6XbTqU" target="_blank">→ UXユニットチャットスペースへ</a>
         </footer>
