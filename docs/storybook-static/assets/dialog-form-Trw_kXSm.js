@@ -1,0 +1,3 @@
+import{ae as t,af as m}from"./index-CeKuR49N.js";import{u as r}from"./index-Bq67ke2T.js";import"./iframe-Cg2ATuqu.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-D-8MO0q_.js";import"./index-DPS9-N-h.js";import"./index-DrFu-skq.js";function e(n){const o={h1:"h1",p:"p",...r(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(m,{title:"EXAMPLES/ダイアログフォーム(WIP)"}),`
+`,t.jsx(o.h1,{id:"ダイアログフォーム",children:"ダイアログフォーム"}),`
+`,t.jsx(o.p,{children:"Dialog ComponentとForm Componentを組み合わせたフォームの例を示します。使い方のイメージを掴む・結合テストを行うため。"})]})}function h(n={}){const{wrapper:o}={...r(),...n.components};return o?t.jsx(o,{...n,children:t.jsx(e,{...n})}):e(n)}export{h as default};

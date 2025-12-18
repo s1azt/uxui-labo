@@ -1,0 +1,34 @@
+/* テーマCSS インデックスファイル */
+/* 自動生成ファイル - 直接編集しないでください */
+
+/* デフォルトテーマのインポート */
+@import './default.css';
+
+/* 全テーマのインポート */
+@import './theme-blue.css';
+@import './theme-orange.css';
+@import './theme-red.css';
+@import './theme-green.css';
+@import './theme-purple.css';
+@import './theme-darkCyan.css';
+@import './theme-darkBlue.css';
+@import './theme-monitoring.css';
+@import './theme-networkLine.css';
+
+/* デフォルトテーマ設定 */
+:root {
+  /* デフォルトではblueテーマを使用 */
+}
+
+/* テーマ切り替え用のJavaScriptヘルパー */
+/*
+使用例:
+document.documentElement.setAttribute('data-theme', 'orange');
+または
+document.documentElement.className = 'theme-orange';
+*/
+
+/* 共通スタイル */
+.theme-transition {
+  transition: all 0.3s ease;
+}
