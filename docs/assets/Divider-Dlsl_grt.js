@@ -1,3 +1,0 @@
-import{x as p}from"./lit-element-C4bBeaiV.js";import{t as v,E as d}from"./element-BmCHZ0P_.js";import{n as f}from"./property-BacG-Vag.js";import{c}from"./index-Br9a1yed.js";var m=Object.defineProperty,u=Object.getOwnPropertyDescriptor,l=(s,t,i,e)=>{for(var r=e>1?void 0:e?u(t,i):t,o=s.length-1,n;o>=0;o--)(n=s[o])&&(r=(e?n(t,i,r):n(r))||r);return e&&r&&m(t,i,r),r};const h=c({base:"bg-divider",variants:{orientation:{horizontal:"h-px w-full",vertical:"h-full w-px"}},defaultVariants:{orientation:"horizontal"}});let a=class extends d{constructor(){super(...arguments),this.orientation="horizontal"}render(){return p`
-      <div class="${h({orientation:this.orientation})}"></div>
-    `}};l([f({type:String})],a.prototype,"orientation",2);a=l([v("yg-divider")],a);export{a as Y};

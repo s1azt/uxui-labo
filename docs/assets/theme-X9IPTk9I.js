@@ -1,8 +1,0 @@
-import{ae as e,af as i}from"./index-CeKuR49N.js";import{u as c}from"./index-Bq67ke2T.js";import"./iframe-Cg2ATuqu.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-D-8MO0q_.js";import"./index-DPS9-N-h.js";import"./index-DrFu-skq.js";function o(t){const n={code:"code",h1:"h1",img:"img",p:"p",pre:"pre",...c(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"USAGE/Theme"}),`
-`,e.jsx(n.h1,{id:"theme",children:"Theme"}),`
-`,e.jsx(n.p,{children:"車両管理システムでは、ユーザーごとにテーマを切り替えることができます。"}),`
-`,e.jsx(n.p,{children:e.jsx(n.img,{src:"/images/6.png",alt:""})}),`
-`,e.jsxs(n.p,{children:["こちらのテーマ切り替えは、",e.jsx(n.code,{children:"setTheme"}),"メソッドを呼び出すことで行います。"]}),`
-`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-html",children:'<div class="container">\n  <yg-button onclick="setTheme(`blue`)"> Switch To Blue </yg-button>\n  <yg-button onclick="setTheme(`red`)"> Switch To Red </yg-button>\n  <yg-button onclick="setTheme(`green`)"> Switch To Green </yg-button>\n  <yg-button onclick="setTheme(`purple`)"> Switch To Purple </yg-button>\n  <yg-button onclick="setTheme(`darkCyan`)"> Switch To DarkCyan </yg-button>\n  <yg-button onclick="setTheme(`darkBlue`)"> Switch To DarkBlue </yg-button>\n</div>\n'})}),`
-`,e.jsxs(n.p,{children:[e.jsx(n.code,{children:"setTheme"}),"メソッドは、",e.jsx(n.code,{children:"blue"}),"または",e.jsx(n.code,{children:"orange"}),"を引数に取り、テーマを切り替えます。デフォルトでは、",e.jsx(n.code,{children:"blue"}),"が選択されています。"]}),`
-`,e.jsxs(n.p,{children:["このメソッドは",e.jsx(n.code,{children:"window"}),"オブジェクトに定義されているため、どこからでも呼び出すことができます。"]})]})}function p(t={}){const{wrapper:n}={...c(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(o,{...t})}):o(t)}export{p as default};
