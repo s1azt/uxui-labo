@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UXテンプレート | UXUI Labo</title>
+    <script>
+        // 画像URL設定 - 差し替えする場合はこちらを編集してください
+        const TEMPLATE_IMAGES = {
+            // Phase 1: YSDの開発工程
+            '5w1h': 'https://images.unsplash.com/photo-1556374149-b05b813beef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'userInterview': 'https://images.unsplash.com/photo-1758520144555-af04bf9ad3e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'currentResearch': 'https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'persona': 'https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'customerJourney': 'https://images.unsplash.com/photo-1758272959377-1d5466d3841b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'empathyMap': 'https://images.unsplash.com/photo-1758273240331-745ccab011a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            // Phase 2: 要求定義
+            'userStoryMapping': 'https://images.unsplash.com/photo-1677506048148-0c914dd8197b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'priorityMatrix': 'https://images.unsplash.com/photo-1683727609398-7693457f4717?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'mvp': 'https://images.unsplash.com/photo-1643878183215-4957f8365045?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            // Phase 3: 要件定義
+            'functionRequirements': 'https://images.unsplash.com/photo-1623265300797-4a3541e29a60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'usecase': 'https://images.unsplash.com/photo-1708807524676-86a7a4d42d2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'businessFlow': 'https://images.unsplash.com/photo-1547194936-28214bd75193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            // Phase 4: 基本設計
+            'sitemap': 'https://images.unsplash.com/photo-1618993653080-c895ec0c0606?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'wireframe': 'https://images.unsplash.com/photo-1761122827167-159d1d272313?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'screenTransition': 'https://images.unsplash.com/photo-1723705027411-9bfc3c99c2e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'uiGuideline': 'https://images.unsplash.com/photo-1583012279653-1575246476c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'prototype': 'https://images.unsplash.com/photo-1591381287254-b3349c60bf9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+            'usabilityTest': 'https://images.unsplash.com/photo-1580894740397-0946742deb4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'
+        };
+    </script>
     <style>
         * {
             margin: 0;
@@ -611,7 +638,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-108" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/5w1h.png" alt="5W1H分析シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1556374149-b05b813beef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="5W1H分析シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">📊</div>
                             </div>
                             <div class="template-content">
@@ -621,7 +648,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-161" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/user-interview.png" alt="ユーザーインタビュー計画" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1758520144555-af04bf9ad3e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ユーザーインタビュー計画" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🎯</div>
                             </div>
                             <div class="template-content">
@@ -631,7 +658,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-214" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/current-research.png" alt="現状調査シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="現状調査シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🔍</div>
                             </div>
                             <div class="template-content">
@@ -647,7 +674,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-267" target="_blank" class="template-card highlight">
                             <div class="template-preview">
-                                <img src="./image/ux-template/persona.png" alt="ペルソナ設定" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ペルソナ設定" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">👤</div>
                             </div>
                             <div class="template-content">
@@ -657,7 +684,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-320" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/customer-journey.png" alt="カスタマージャーニーマップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1758272959377-1d5466d3841b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="カスタマージャーニーマップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🗺️</div>
                             </div>
                             <div class="template-content">
@@ -667,7 +694,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-373" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/empathy-map.png" alt="共感マップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1758273240331-745ccab011a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="共感マップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">💭</div>
                             </div>
                             <div class="template-content">
@@ -689,7 +716,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-426" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/user-story-mapping.png" alt="ユーザーストーリーマッピング" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1677506048148-0c914dd8197b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ユーザーストーリーマッピング" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">📝</div>
                             </div>
                             <div class="template-content">
@@ -699,7 +726,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-479" target="_blank" class="template-card highlight">
                             <div class="template-preview">
-                                <img src="./image/ux-template/priority-matrix.png" alt="優先順位マトリクス" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1683727609398-7693457f4717?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="優先順位マトリクス" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">⚖️</div>
                             </div>
                             <div class="template-content">
@@ -709,7 +736,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-532" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/mvp.png" alt="MVP定義シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1643878183215-4957f8365045?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="MVP定義シート" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🎯</div>
                             </div>
                             <div class="template-content">
@@ -731,7 +758,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-585" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/function-requirements.png" alt="機能要件一覧" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1623265300797-4a3541e29a60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="機能要件一覧" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">📋</div>
                             </div>
                             <div class="template-content">
@@ -741,7 +768,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-638" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/usecase.png" alt="ユースケース図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1708807524676-86a7a4d42d2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ユースケース図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🔄</div>
                             </div>
                             <div class="template-content">
@@ -751,7 +778,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-691" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/business-flow.png" alt="業務フロー図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1547194936-28214bd75193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="業務フロー図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">📊</div>
                             </div>
                             <div class="template-content">
@@ -773,7 +800,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-744" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/sitemap.png" alt="サイトマップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1618993653080-c895ec0c0606?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="サイトマップ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🗂️</div>
                             </div>
                             <div class="template-content">
@@ -783,7 +810,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-797" target="_blank" class="template-card highlight">
                             <div class="template-preview">
-                                <img src="./image/ux-template/wireframe.png" alt="ワイヤーフレーム" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1761122827167-159d1d272313?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ワイヤーフレーム" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🎨</div>
                             </div>
                             <div class="template-content">
@@ -793,7 +820,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-850" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/screen-transition.png" alt="画面遷移図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1723705027411-9bfc3c99c2e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="画面遷移図" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">📱</div>
                             </div>
                             <div class="template-content">
@@ -809,7 +836,7 @@
                     <div class="templates-row">
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-903" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/ui-guideline.png" alt="UIデザインガイドライン" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1583012279653-1575246476c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="UIデザインガイドライン" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">🎨</div>
                             </div>
                             <div class="template-content">
@@ -819,7 +846,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-956" target="_blank" class="template-card highlight">
                             <div class="template-preview">
-                                <img src="./image/ux-template/prototype.png" alt="インタラクティブプロトタイプ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1591381287254-b3349c60bf9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="インタラクティブプロトタイプ" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">⚡</div>
                             </div>
                             <div class="template-content">
@@ -829,7 +856,7 @@
                         </a>
                         <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=2-1009" target="_blank" class="template-card">
                             <div class="template-preview">
-                                <img src="./image/ux-template/usability-test.png" alt="ユーザビリティテスト計画" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="https://images.unsplash.com/photo-1580894740397-0946742deb4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="ユーザビリティテスト計画" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="template-preview-icon" style="display: none;">✅</div>
                             </div>
                             <div class="template-content">
@@ -849,7 +876,7 @@
         <!-- CTA Section -->
         <div class="cta-section">
             <h2>🚀 実際のテンプレートを使ってみよう！</h2>
-            <p>すべてのテンプレートはFigma/FigJamで公開されています。<br>プロジェクトで自由にコピーして活用してください。</p>
+            <p>すべてのテンプレートはFigma/FigJamで公開されています���<br>プロジェクトで自由にコピーして活用してください。</p>
             <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=0-1&t=H1nQVixrlxt4sTaY-1" target="_blank" class="cta-button">
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
