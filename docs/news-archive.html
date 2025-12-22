@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ一覧 - UXUI Labo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #6366f1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #2563eb, #4f46e5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <!-- Animated background pattern -->
+        <div class="fixed inset-0 z-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100"></div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="./index.html" class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">UXUI Labo</span>
+                    </a>
+                    <a href="./index.html" class="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>トップに戻る</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-16 relative z-10">
+            <!-- Header -->
+            <div class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 text-white py-20">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-4 border border-white/30">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                            </svg>
+                            <span class="text-sm font-semibold">お知らせアーカイブ</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black mb-4">お知らせ一覧</h1>
+                        <p class="text-xl text-blue-100">UXUI浸透活動に関する最新情報</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Section -->
+            <section class="py-12 relative z-10">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid gap-6">
+                        <!-- News Item 1 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2026.01</div>
+                                    <span class="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold">実施予定</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">アンケート</span>
+                                        <h3 class="font-bold text-gray-900">UX浸透度アンケート実施予定</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">YSD全体のUXUI浸透度を可視化し、今後の施策に活かすためのアンケートを実施します。開発チーム向けと全社向けの2種類を予定。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>実施時期：2026年1月中旬予定</p>
+                                        <p>対象：開発部門全社員（開発チーム向け）、および全社員（全社向け）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 2 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.12</div>
+                                    <span class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">募集予定</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">イベント</span>
+                                        <h3 class="font-bold text-gray-900">Figma開発研修（入門編）開催予定</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">Figma・Figjamの基本操作と業務への活用方法を学ぶ研修を2026年1月〜2月に開催予定です。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>開催予定：2026年1月〜2月</p>
+                                        <p>対象：Figma初心者、業務でFigmaを活用したい方</p>
+                                        <p>内容：Figma基本操作、Figjamでのワークショップ、デザインシステムCoknockの紹介</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 3 -->
+                        <a href="./survey-results.html" class="block bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.11</div>
+                                    <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">完了</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">アンケート結果</span>
+                                        <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">UXUIへの意識アンケート結果を公開</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">全社的にUX/UIの関心が非常に高いことが判明。デザインシステム導入の親和性を確認しました。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>実施期間：2025年11月</p>
+                                        <p>回答数：開発部門より多数回答</p>
+                                        <p>主な結果：UX/UI改善への高い関心、デザインシステム導入への期待</p>
+                                    </div>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- News Item 4 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.11</div>
+                                    <span class="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold">公開中</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">コラム</span>
+                                        <h3 class="font-bold text-gray-900">Figma Maker Collective Tokyo参加レポート公開</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">AI時代のデザイナーの役割について、最新の知見をお届けします。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>イベント日：2025年11月6日</p>
+                                        <p>場所：TRUNK(HOTEL) CAT STREET（渋谷）</p>
+                                        <p>内容：Figmaの最新機能、AI×デザイン、デザインシステム事例紹介</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 5 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.10</div>
+                                    <span class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">完了</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">組織</span>
+                                        <h3 class="font-bold text-gray-900">UXユニット正式発足</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">グループシステム部内にUXユニットを正式に設立。人材開発部と連携し、全社的なUX浸透活動を開始しました。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>発足日：2025年10月</p>
+                                        <p>体制：グループシステム部・人材開発部・NCDCとの協力体制</p>
+                                        <p>目的：UX思考の組織文化醸成、デザインシステム構築</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 6 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.09</div>
+                                    <span class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">開始</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">プロジェクト</span>
+                                        <h3 class="font-bold text-gray-900">デザインシステム「Coknock」開発開始</h3>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">YSD全体で一貫性のあるUI開発を実現するためのデザインシステム構築プロジェクトがスタートしました。</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>開始日：2025年9月</p>
+                                        <p>内容：UIコンポーネントライブラリ、デザイントークン、ガイドライン策定</p>
+                                        <p>ツール：Figma、Storybook</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back to Top -->
+                    <div class="text-center mt-12">
+                        <a href="./index.html#news" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-purple-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>トップページに戻る</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold">UXUI Labo</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        ヤマトシステム開発株式会社<br>
+                        グループシステム部 UXユニット
+                    </p>
+                    <p class="text-sm text-gray-500">
+                        © 2025 Yamato System Development Co., Ltd. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
