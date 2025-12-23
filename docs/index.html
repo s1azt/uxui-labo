@@ -8,6 +8,9 @@
     <meta http-equiv="Expires" content="0">
     <title>UXUI Labo - YSD UX浸透活動ポータル</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- データファイルの読み込み -->
+    <script src="./data/news.js"></script>
+    <script src="./data/columns.js"></script>
     <style>
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
@@ -186,7 +189,7 @@
                         </div>
                         <p class="text-xl text-gray-700 leading-relaxed">
                             ユーザー視点の考え方を組織の"当たり前"にし、<br>
-                            顧客へ<span class="font-bold text-blue-600">"感動的価値"</span>を届け続ける！
+                            顧客へ<span class="font-bold text-blue-600">"感動的価値"</span>を届け続ける!
                         </p>
                     </div>
 
@@ -279,64 +282,8 @@
                         <h2 class="text-4xl font-black text-gray-900">最新情報</h2>
                     </div>
 
-                    <div class="grid gap-6">
-                        <!-- News Item 1 -->
-                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="text-sm font-semibold text-blue-600 mb-1">2026.01</div>
-                                    <span class="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold">実施予定</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">アンケート</span>
-                                        <h3 class="font-bold text-gray-900">UX浸透度アンケート実施予定</h3>
-                                    </div>
-                                    <p class="text-sm text-gray-600">YSD全体のUXUI浸透度を可視化し、今後の施策に活かすためのアンケートを実施します。開発チーム向けと全社向けの2種類を予定。</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- News Item 2 -->
-                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.12</div>
-                                    <span class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">募集予定</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">イベント</span>
-                                        <h3 class="font-bold text-gray-900">Figma開発研修（入門編）開催予定</h3>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Figma・Figjamの基本操作と業務への活用方法を学ぶ研修を2026年1月〜2月に開催予定です。</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- News Item 3 -->
-                        <a href="./survey-results.html" class="block bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="text-sm font-semibold text-blue-600 mb-1">2025.11</div>
-                                    <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">完了</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">アンケート結果</span>
-                                        <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">UXUIへの意識アンケート結果を公開</h3>
-                                    </div>
-                                    <p class="text-sm text-gray-600">全社的にUX/UIの関心が非常に高いことが判明。デザインシステム導入の親和性を確認しました。</p>
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <svg class="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
+                    <!-- お知らせはJavaScriptで動的に生成されます -->
+                    <div id="news-container" class="grid gap-6"></div>
 
                     <!-- View All News Link -->
                     <div class="text-center mt-8">
@@ -364,135 +311,8 @@
                         <p class="text-xl text-gray-600">活動内容紹介・ツール紹介・イベント潜入報告</p>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-8 mb-8">
-                        <!-- Column 1 - Featured: Coknock Story -->
-                        <a href="./coknock-story.html" class="group bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all border-2 border-purple-300">
-                            <div class="aspect-video bg-gradient-to-br from-purple-400 to-pink-500 relative overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Coknock Development" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute top-4 right-4">
-                                    <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">注目</span>
-                                </div>
-                                <div class="absolute bottom-4 left-4 right-4">
-                                    <span class="bg-white/90 text-purple-600 px-3 py-1 rounded-full text-xs font-semibold">2025.11</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                                        <span class="text-white text-xs font-bold">吾</span>
-                                    </div>
-                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">吾田 秀樹</span></span>
-                                </div>
-                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
-                                    デザインシステム「Coknock」開発ストーリー
-                                </h3>
-                                <p class="text-gray-600 mb-4 line-clamp-3">
-                                    なぜ今、デザインシステムが必要なのか？YSDにおけるデザインシステム構築の背景、コンセプト、そして未来への展望を語ります。
-                                </p>
-                                <div class="flex items-center gap-2 text-purple-600 font-semibold">
-                                    <span>続きを読む</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Column 2: Figma Event Report -->
-                        <a href="./column1.html" class="group bg-white/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-300">
-                            <div class="aspect-video bg-gradient-to-br from-blue-400 to-indigo-500 relative overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Figma Event" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                <div class="absolute bottom-4 left-4 right-4">
-                                    <span class="bg-white/90 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">2025.11</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                                        <span class="text-white text-xs font-bold">堤</span>
-                                    </div>
-                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">堤 圭佑</span></span>
-                                </div>
-                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                                    Figma Maker Collective Tokyo 2025 参加レポート
-                                </h3>
-                                <p class="text-gray-600 mb-4 line-clamp-3">
-                                    AI時代のデザイナーの役割とは？Figmaの最新機能やデザインコミュニティの動向について、現地からレポートします。
-                                </p>
-                                <div class="flex items-center gap-2 text-blue-600 font-semibold">
-                                    <span>続きを読む</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-
-                        <!-- Column 3: Survey Results -->
-                        <a href="./column3.html" class="group bg-white/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-green-300">
-                            <div class="aspect-video bg-gradient-to-br from-green-400 to-emerald-500 relative overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Survey Data" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                <div class="absolute bottom-4 left-4 right-4">
-                                    <span class="bg-white/90 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">2025.11</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                                        <span class="text-white text-xs font-bold">礒</span>
-                                    </div>
-                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">礒沼 純</span></span>
-                                </div>
-                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
-                                    UXUIへの意識調査で見えた組織の可能性
-                                </h3>
-                                <p class="text-gray-600 mb-4 line-clamp-3">
-                                    全社的に高いUX/UI関心度を確認。アンケート結果が示すデザインシステム導入の好機とこれからの展開について。
-                                </p>
-                                <div class="flex items-center gap-2 text-green-600 font-semibold">
-                                    <span>続きを読む</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Column 4: Foreign Engineer's View -->
-                        <!--<a href="./newsletter.html" class="group bg-white/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-orange-300">
-                            <div class="aspect-video bg-gradient-to-br from-orange-400 to-amber-500 relative overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Japan Culture" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                <div class="absolute bottom-4 left-4 right-4">
-                                    <span class="bg-white/90 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">2025.12</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center">
-                                        <span class="text-white text-xs font-bold">S</span>
-                                    </div>
-                                    <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">Samer Salmeh</span></span>
-                                </div>
-                                <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                                    外国人から見た日本のUXUI
-                                </h3>
-                                <p class="text-gray-600 mb-4 line-clamp-3">
-                                    これは私が慣れ親しんだ世界じゃない！外国人エンジニアの視点から見た、日本のWebサイトの独特な特徴とUX文化について語ります。
-                                </p>
-                                <div class="flex items-center gap-2 text-orange-600 font-semibold">
-                                    <span>続きを読む</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>-->
-                    </div>
+                    <!-- コラムはJavaScriptで動的に生成されます -->
+                    <div id="columns-container" class="grid md:grid-cols-3 gap-8 mb-8"></div>
 
                     <!-- View All Columns Link -->
                     <div class="text-center">
@@ -683,7 +503,7 @@
                     <!-- Purpose Statement -->
                     <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/40 shadow-xl">
                         <p id="purpose-text" class="text-center text-gray-700 leading-relaxed">
-                            自社プロダクト��発においてUXの考え方を浸透させUI/UXデザインの具体的な方法論やマインドセットを段階的に習得することで、プロダクト価値およびYSDブランドの向上に寄与できる力を育成します。
+                            自社プロダクト開発においてUXの考え方を浸透させUI/UXデザインの具体的な方法論やマインドセットを段階的に習得することで、プロダクト価値およびYSDブランドの向上に寄与できる力を育成します。
                         </p>
                     </div>
 
@@ -941,7 +761,7 @@
                                            class="text-blue-600 hover:text-blue-700 font-semibold">
                                             uxui-unit@nekonet.co.jp
                                         </a>
-                                        <p class="text-sm text-gray-600 mt-2">UXUIユニット共用アドレス：YSD-UXUIチーム運用[YSD]</p>
+                                        <p class="text-sm text-gray-600 mt-2">UXUIユニット共用アドレス:YSD-UXUIチーム運用[YSD]</p>
                                     </div>
                                 </div>
                             </div>
@@ -956,7 +776,7 @@
                                     <div class="flex-1">
                                         <h3 class="font-bold text-gray-900 mb-2">Googleチャット</h3>
                                         <p class="text-gray-700 mb-3">「UXユニット」スペース</p>
-                                        <p class="text-sm text-gray-600 mb-4">💬 気軽にご相談ください！質問や相談はチャットスペースでいつでも受け付けています。</p>
+                                        <p class="text-sm text-gray-600 mb-4">💬 気軽にご相談ください!質問や相談はチャットスペースでいつでも受け付けています。</p>
                                         <a href="https://chat.google.com/room/AAQAxuH99as?cls=1" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-5 py-3 rounded-lg font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
@@ -1051,6 +871,152 @@
             });
         });
 
+        // お知らせのレンダリング関数
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            if (!container || typeof newsData === 'undefined') return;
+
+            // 最新3件のみ表示
+            const recentNews = newsData.slice(0, 3);
+            
+            container.innerHTML = recentNews.map(news => {
+                const statusColors = {
+                    orange: 'bg-orange-100 text-orange-700',
+                    green: 'bg-green-100 text-green-700',
+                    blue: 'bg-blue-100 text-blue-700'
+                };
+                
+                const statusClass = statusColors[news.statusColor] || statusColors.blue;
+                const isLink = news.link && news.link !== null;
+                const tag = isLink ? 'a' : 'div';
+                const hrefAttr = isLink ? `href="${news.link}"` : '';
+                const blockClass = isLink ? 'block' : '';
+                
+                return `
+                    <${tag} ${hrefAttr} class="${blockClass} bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div class="flex-shrink-0">
+                                <div class="text-sm font-semibold text-blue-600 mb-1">${news.date}</div>
+                                <span class="inline-block ${statusClass} px-3 py-1 rounded-full text-xs font-semibold">${news.status}</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">${news.category}</span>
+                                    <h3 class="font-bold text-gray-900 ${isLink ? 'group-hover:text-blue-600 transition-colors' : ''}">${news.title}</h3>
+                                </div>
+                                <p class="text-sm text-gray-600">${news.description}</p>
+                            </div>
+                            ${isLink ? `
+                            <div class="flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </${tag}>
+                `;
+            }).join('');
+        }
+
+        // コラムのレンダリング関数
+        function renderColumns() {
+            const container = document.getElementById('columns-container');
+            if (!container || typeof columnsData === 'undefined') return;
+
+            // 最新3件のみ表示
+            const recentColumns = columnsData.slice(0, 3);
+            
+            container.innerHTML = recentColumns.map(column => {
+                const isFeatured = column.featured;
+                
+                // 色設定
+                const getColorClasses = (accentColor) => {
+                    switch(accentColor) {
+                        case 'purple':
+                            return {
+                                border: 'border-purple-300',
+                                bg: 'from-purple-500/10 via-pink-500/10 to-orange-500/10',
+                                gradient: 'from-purple-400 to-pink-500',
+                                text: 'text-purple-600',
+                                badge: 'from-purple-500 to-pink-500'
+                            };
+                        case 'blue':
+                            return {
+                                border: 'border-blue-300',
+                                bg: '',
+                                gradient: 'from-blue-400 to-indigo-500',
+                                text: 'text-blue-600',
+                                badge: ''
+                            };
+                        case 'green':
+                            return {
+                                border: 'border-green-300',
+                                bg: '',
+                                gradient: 'from-green-400 to-emerald-500',
+                                text: 'text-green-600',
+                                badge: ''
+                            };
+                        case 'orange':
+                            return {
+                                border: 'border-orange-300',
+                                bg: '',
+                                gradient: 'from-orange-400 to-amber-500',
+                                text: 'text-orange-600',
+                                badge: ''
+                            };
+                        default:
+                            return {
+                                border: 'border-blue-300',
+                                bg: '',
+                                gradient: 'from-blue-400 to-indigo-500',
+                                text: 'text-blue-600',
+                                badge: ''
+                            };
+                    }
+                };
+                
+                const colors = getColorClasses(column.accentColor);
+                
+                return `
+                    <a href="${column.link}" class="group ${isFeatured ? `bg-gradient-to-br ${colors.bg}` : 'bg-white/60'} backdrop-blur-xl rounded-2xl overflow-hidden shadow-${isFeatured ? '2xl hover:shadow-3xl' : 'xl hover:shadow-2xl'} transition-all ${isFeatured ? 'border-2' : 'border'} ${isFeatured ? colors.border : 'border-white/40 hover:' + colors.border}">
+                        <div class="aspect-video bg-gradient-to-br ${colors.gradient} relative overflow-hidden">
+                            <img src="${column.image}" alt="${column.title}" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/${isFeatured ? '60' : '50'} to-transparent"></div>
+                            ${isFeatured ? `
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-gradient-to-r ${colors.badge} text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">注目</span>
+                            </div>
+                            ` : ''}
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="bg-white/90 ${colors.text} px-3 py-1 rounded-full text-xs font-semibold">${column.date}</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-8 h-8 bg-gradient-to-br ${column.authorColor} rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">${column.authorInitial}</span>
+                                </div>
+                                <span class="text-sm text-gray-600">by <span class="font-semibold text-gray-900">${column.authorName}</span></span>
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:${colors.text} transition-colors">
+                                ${column.title}
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                ${column.description}
+                            </p>
+                            <div class="flex items-center gap-2 ${colors.text} font-semibold">
+                                <span>続きを読む</span>
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
         // Skills Tab Switching
         const designerSkills = [
             {
@@ -1110,7 +1076,7 @@
                 emoji: '🌱',
                 range: '軽微な修正・既存コンポーネントを利用した実装',
                 skills: ['バグ修正とスタイル調整', 'UIコンポーネント利用', 'デザインシステムの理解と説明', 'Dev Modeの活用', 'AIによる不明点解消'],
-                keywords: ['Figma Dev Mode', 'Storybook', 'Props利用', 'AI活用（実装補助）']
+                keywords: ['Figma Dev Mode', 'Storybook', 'Props利用', 'AI活用(実装補助)']
             },
             {
                 level: 'レベル3',
@@ -1212,10 +1178,12 @@
             }
         }
 
-        // Initialize skills on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             renderSkills(designerSkills, 'designer-content');
             renderSkills(engineerSkills, 'engineer-content');
+            renderNews();
+            renderColumns();
         });
     </script>
 </body>
