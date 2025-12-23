@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXUIへの意識調査で見えた組織の可能性 | UXUI Labo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #6366f1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #2563eb, #4f46e5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+
+        .chart-bar {
+            transition: width 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <!-- Animated background pattern -->
+        <div class="fixed inset-0 z-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100"></div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="./index.html" class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">UXUI Labo</span>
+                    </a>
+                    <a href="./index.html#columns" class="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>コラム一覧に戻る</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 text-white overflow-hidden pt-24 pb-32">
+            <div class="absolute inset-0 opacity-20">
+                <img src="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Survey Data" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                <div class="mb-6">
+                    <span class="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">2025.11</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                    UXUIへの意識調査で見えた<br>組織の可能性
+                </h1>
+                <p class="text-xl sm:text-2xl mb-8 text-blue-100">
+                    全社的に高いUX/UI関心度を確認。データが示すデザインシステム導入の好機。
+                </p>
+                
+                <!-- Author Info -->
+                <div class="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 inline-flex">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold text-lg">礒</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white">礒沼 純</div>
+                        <div class="text-sm text-blue-100">UXユニット デザイナー</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="relative z-10 -mt-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/40 overflow-hidden">
+                    <div class="p-8 sm:p-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">なぜアンケートを実施したのか？</h2>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                2025年11月、私たちUXユニットは全社を対象にUX/UIに関する意識調査を実施しました。目的は明確でした。<strong>「組織全体のUX/UI浸透度を可視化し、今後の活動方針を定める基礎データを得ること」</strong>です。
+                            </p>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                デザインシステム「Coknock」の構築、UXテンプレートの整備、Figma研修の実施…様々な施策を展開してきました。しかし、これらの活動が組織にどれだけ浸透し、どのような影響を与えているのか。それを客観的に測る必要がありました。
+                            </p>
+                        </div>
+
+                        <!-- Key Finding -->
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12 border-2 border-blue-200">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-3">調査で明らかになったこと</h3>
+                                    <p class="text-lg text-gray-700 mb-4">
+                                        結果は予想を上回るものでした。<strong class="text-blue-600">約91%の回答者がUX/UIに関心を持っており</strong>、その中でも「非常に関心がある」と答えた方が38%に達しました。
+                                    </p>
+                                    <p class="text-gray-700">
+                                        これは、UX/UIが一部の専門家だけのものではなく、組織全体が注目するテーマになっていることを示しています。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Survey Insights -->
+                        <div class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">アンケート結果のポイント</h2>
+                            
+                            <!-- Insight 1 -->
+                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-gray-200 hover:border-blue-300 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="text-white font-bold text-lg">1</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-3">高い関心度</h3>
+                                        <p class="text-gray-700 mb-4">
+                                            「UX/UIに関心がある」と答えた方が<strong>91%</strong>。特に開発チームでは関心度がさらに高く、UX活動への期待値の高さが伺えます。
+                                        </p>
+                                        <div class="bg-blue-50 rounded-xl p-4">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <span class="text-sm font-semibold text-gray-700">非常に関心がある</span>
+                                                <span class="text-sm font-bold text-blue-600">38%</span>
+                                            </div>
+                                            <div class="w-full bg-blue-200 rounded-full h-3">
+                                                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full chart-bar" style="width: 38%"></div>
+                                            </div>
+                                            <div class="flex justify-between items-center mb-2 mt-4">
+                                                <span class="text-sm font-semibold text-gray-700">やや関心がある</span>
+                                                <span class="text-sm font-bold text-blue-600">53%</span>
+                                            </div>
+                                            <div class="w-full bg-blue-200 rounded-full h-3">
+                                                <div class="bg-gradient-to-r from-blue-400 to-indigo-500 h-3 rounded-full chart-bar" style="width: 53%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Insight 2 -->
+                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-gray-200 hover:border-indigo-300 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="text-white font-bold text-lg">2</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-3">デザインシステムへの期待</h3>
+                                        <p class="text-gray-700 mb-4">
+                                            デザインシステム導入について、<strong>「ぜひ活用したい」「機会があれば活用したい」が合わせて約82%</strong>。組織としてデザインシステムを受け入れる土壌が整っていることが確認できました。
+                                        </p>
+                                        <div class="bg-indigo-50 rounded-xl p-4">
+                                            <p class="text-sm text-gray-700 mb-2">
+                                                💡 この結果は、Coknockデザインシステムの導入を進める上で非常にポジティブなシグナルです。
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Insight 3 -->
+                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-gray-200 hover:border-purple-300 transition-all">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="text-white font-bold text-lg">3</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-3">学びへの意欲</h3>
+                                        <p class="text-gray-700 mb-4">
+                                            UX/UIに関する研修や勉強会への参加意向も高く、<strong>約75%が「参加したい」</strong>と回答。特に若手層を中心に、スキルアップへの強い意欲が見られました。
+                                        </p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-start gap-2">
+                                                <svg class="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span class="text-gray-700">Figmaの基本操作</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <svg class="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span class="text-gray-700">UXリサーチ手法</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <svg class="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span class="text-gray-700">デザインシステムの活用方法</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- What This Means -->
+                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 mb-12 border-2 border-amber-200">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                                <span>この結果が意味すること</span>
+                            </h2>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                今回のアンケート結果は、UXユニットにとって大きな確信となりました。<strong>「UXを組織文化として根付かせる」という目標は、決して絵空事ではない</strong>のです。
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                高い関心度、デザインシステムへの期待、学びへの意欲。これらすべてが、私たちの活動が正しい方向に進んでいることを示しています。同時に、この期待に応えるため、より実践的で価値あるサポートを提供していく責任も感じています。
+                            </p>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">これからの展開</h2>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="font-bold text-gray-900">研修プログラムの拡充</h3>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">
+                                        Figma入門研修、UXリサーチ手法の勉強会など、段階的な学習プログラムを2026年から本格展開します。
+                                    </p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 border border-indigo-200">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="font-bold text-gray-900">Coknock導入サポート</h3>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">
+                                        デザインシステムを実際のプロジェクトで活用するための、個別サポート体制を強化していきます。
+                                    </p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="font-bold text-gray-900">コミュニティ形成</h3>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">
+                                        UX/UIに関心を持つメンバーが集まり、知見を共有し合えるコミュニティを育てていきます。
+                                    </p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="font-bold text-gray-900">継続的な効果測定</h3>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">
+                                        定期的なアンケート実施により、活動の効果を測定し、PDCAサイクルを回していきます。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conclusion -->
+                        <div class="border-t-2 border-gray-200 pt-8">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">おわりに</h2>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                今回のアンケート結果は、UXを組織文化として根付かせるための、大きな一歩となりました。数字が示すのは、UX/UIへの関心の高さだけではありません。<strong>「より良いプロダクトを作りたい」「ユーザーに価値を届けたい」という、組織全体の熱意</strong>です。
+                            </p>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                UXユニットは、この熱意に応え、実践的なサポートを提供し続けます。デザインシステム、UXテンプレート、研修プログラム…すべては、一人ひとりがUX視点でプロダクト開発に取り組める環境を作るため。
+                            </p>
+                            <p class="text-gray-700 leading-relaxed font-semibold">
+                                この旅は、始まったばかりです。一緒に、ユーザーに「感動的価値」を届けられる組織を作っていきましょう。
+                            </p>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="mt-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-8 text-white text-center">
+                            <h3 class="text-2xl font-bold mb-4">詳細なアンケート結果を見る</h3>
+                            <p class="text-blue-100 mb-6">
+                                具体的な数値データやグラフなど、より詳しい結果をご覧いただけます
+                            </p>
+                            <a href="./survey-results.html" class="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl">
+                                <span>アンケート結果ページへ</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Columns -->
+                <div class="text-center mt-12 mb-12">
+                    <a href="./index.html#columns" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>コラム一覧に戻る</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
