@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>UXUIイベント紹介 - UXUI Labo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #6366f1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #2563eb, #4f46e5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-100">
+        <!-- Animated background pattern -->
+        <div class="fixed inset-0 z-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-100 via-pink-100 to-indigo-100"></div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="./index.html#columns" class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">UXUI Labo</span>
+                    </a>
+                    <a href="./index.html#columns" class="text-gray-700 hover:text-purple-600 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>トップに戻る</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-16 relative z-10">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-700 text-white py-20 overflow-hidden relative">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'); background-size: cover; background-position: center;"></div>
+                </div>
+                
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div class="text-center">
+                        <div class="inline-block bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-4 border border-white/30">
+                            <span class="text-sm font-semibold">2026年開催予定</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                            UXUIイベント紹介<br>
+                            <span class="text-2xl sm:text-3xl text-purple-100">〜 学びと交流の場を創る 〜</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl mb-4 text-purple-100">
+                            Figma研修から座談会まで、多様な学びの機会を提供
+                        </p>
+                        <div class="flex items-center justify-center gap-4 text-sm text-purple-200">
+                            <span>2026.1 - 2026.2</span>
+                            <span>•</span>
+                            <span>UXUIユニット</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <article class="py-16">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Introduction -->
+                    <section class="mb-16">
+                        <div class="bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-indigo-500/10 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-white/40 shadow-2xl">
+                            <h2 class="text-3xl font-black text-gray-900 mb-6">はじめに</h2>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                UXUIユニットでは、社内のUXUI活動を活性化し、より良いプロダクト開発を推進するため、様々なイベントを企画しています。
+                            </p>
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                このページでは、2026年1月〜2月に開催予定のイベントをご紹介します。<br>
+                                実践的な<span class="font-bold text-purple-600">Figma研修</span>から、気軽に参加できる<span class="font-bold text-purple-600">座談会</span>まで、多様な学びの機会をご用意しています。
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Event 1: Figma研修 -->
+                    <section class="mb-16">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white font-bold">
+                                1
+                            </div>
+                            <h2 class="text-3xl font-black text-gray-900">Figma開発研修　入門編</h2>
+                        </div>
+
+                        <!-- Overview -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 mb-8">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-2xl">📚</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-gray-900 mb-2">講義内容</h3>
+                                    <p class="text-gray-700">Figma・Figjamの基本操作と業務への活用方法を学ぶ実践型の研修です。</p>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">登壇者</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">UXUIユニットメンバー</p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">対象者</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">システムに関する課題において、最初に完成イメージを作りたい方</p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">開催予定</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">2026年1月〜2月（3時間）</p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">開催方法</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">対面（会議室Y or Z）</p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">定員</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">最大20名</p>
+                                </div>
+
+                                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <h4 class="font-bold text-gray-900">アーカイブ</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700">あり（動画編集後公開）</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 募集前確認事項 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 mb-6">
+                            <h3 class="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                募集前確認事項
+                            </h3>
+
+                            <div class="space-y-4">
+                                <div class="border-l-4 border-purple-600 pl-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">対象者の明確化</h4>
+                                    <p class="text-gray-700 text-sm">明確に対象者を決めることにより、研修効果を高めたい</p>
+                                </div>
+
+                                <div class="border-l-4 border-pink-600 pl-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">募集期間</h4>
+                                    <p class="text-gray-700 text-sm">開催の1か月前までに募集終了し、3週間前には確定連絡できるとよい</p>
+                                </div>
+
+                                <div class="border-l-4 border-indigo-600 pl-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">研修環境</h4>
+                                    <p class="text-gray-700 text-sm">端末指定・NW環境・必要なアプリケーション・ブラウザ指定</p>
+                                </div>
+
+                                <div class="border-l-4 border-blue-600 pl-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Figmaアカウント準備</h4>
+                                    <p class="text-gray-700 text-sm">無料版の活用を検討</p>
+                                </div>
+
+                                <div class="border-l-4 border-purple-600 pl-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">会場準備物</h4>
+                                    <p class="text-gray-700 text-sm">プロジェクター・モニター等</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 募集後確認事項 -->
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 sm:p-8 border border-purple-100 shadow-lg">
+                            <h3 class="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                                </svg>
+                                募集後確認事項
+                            </h3>
+
+                            <div class="space-y-4">
+                                <div class="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-white/40">
+                                    <h4 class="font-bold text-gray-900 mb-2">📊 アンケート実施</h4>
+                                    <p class="text-gray-700 text-sm mb-2">受講者の満足度や今後の改善につなげるため、アンケートを実施します。</p>
+                                    <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                                        <li>• 満足度</li>
+                                        <li>• 業務で使えそうか</li>
+                                        <li>• 次に知りたい機能は何か　など</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-white/40">
+                                    <h4 class="font-bold text-gray-900 mb-2">🔄 アフターフォロー</h4>
+                                    <p class="text-gray-700 text-sm mb-2">研修後も継続的に学べる環境を整備します。</p>
+                                    <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                                        <li>• いつでもFigmaで復習できるようにする（ライセンス付与を検討）</li>
+                                        <li>• Figma相談チャンネルの作成を検討</li>
+                                        <li>• 復習のためのFigma設定も教える（閲覧：無料、個人利用：無料）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Event 2: 座談会 -->
+                    <section class="mb-16">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-600 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+                                2
+                            </div>
+                            <h2 class="text-3xl font-black text-gray-900">座談会（UX情報発信）</h2>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-indigo-500/10 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-white/40 shadow-2xl mb-8">
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                UXUIに関する知見を共有し、組織全体のデザイン意識を高めるための座談会を企画しています。
+                            </p>
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                以下、7つのテーマ案から、最適な形式を選定して開催予定です。
+                            </p>
+                        </div>
+
+                        <!-- 検討事項 -->
+                        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 mb-8">
+                            <h3 class="text-xl font-black text-gray-900 mb-4 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                                開催形式の検討
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="text-xs text-purple-600">•</span>
+                                    </div>
+                                    <p class="text-gray-700">座談会形式：テーマごとにUXUIを実施したことのある他部署・他チームメンバーを選出（UX/UIに興味がある初心者が混ざっていても良い）</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-6 h-6 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="text-xs text-pink-600">•</span>
+                                    </div>
+                                    <p class="text-gray-700">スピーカー形式：一旦UXUIユニットのみとする場合、［生成AI活用事例共有会］のようにスピーカー形式で実施</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- テーマ案一覧 -->
+                        <h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                            <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                            </svg>
+                            テーマ案
+                        </h3>
+
+                        <div class="space-y-6">
+                            <!-- 案1 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案1
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">UXUI社内取り組み事例共有会</h4>
+                                        <p class="text-sm text-gray-600">社内で実際に起きた「良い変化」にスポットライトを当て、ポジティブな情報を展開するための施策</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                                        <h5 class="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg>
+                                            目的
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 成功パターンの横展開：「あのチームのやり方は、うちでも使える」という再現性のある知見を広める</li>
+                                            <li>• モチベーション向上：「うちの会社でも、こだわればここまで良いものが作れるんだ」という認識を持たせる</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-pink-50 rounded-xl p-4 border border-pink-100">
+                                        <h5 class="font-bold text-pink-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                            </svg>
+                                            ポイント
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 「Before」と「思考プロセス」を重視</li>
+                                            <li>• 「どんな課題があり」「どう悩み」「なぜそのデザインに決めたか」という過程の展開</li>
+                                            <li>• 大規模リニューアルだけでなく、「ボタンの文言を変えたら問い合わせが減った」といった地味だが確実な改善で生まれた小さな成果こそ、開発メンバーが真似しやすい</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+                                        <h5 class="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                            </svg>
+                                            ターゲット
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 自チームでの改善の糸口を探しているPM、リーダー層</li>
+                                            <li>• 「UXって言われても具体的に何をすればいいか分からない」と感じているエンジニア</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案2 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案2
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">UXUI失敗談共有会</h4>
+                                        <p class="text-sm text-gray-600">あえて「うまくいかなかった話」を共有することで、開発組織の風通しを良くし、UX活動への心理的ハードルを下げる施策<br>
+                                        <span class="text-purple-600 font-semibold">※案1とセットで失敗談→成功例としてつなげる</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                                        <h5 class="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg>
+                                            目的
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 心理的安全性の醸成：「UXUIの活動において、トライ＆エラーは当たり前」「失敗しても大丈夫」という文化を作る</li>
+                                            <li>• アンチパターンの学習：「ユーザーの声を無視して機能を追加したら、誰も使わなかった」といった同じ轍（てつ）を踏まないための防御策を学ぶ</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-pink-50 rounded-xl p-4 border border-pink-100">
+                                        <h5 class="font-bold text-pink-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            ポイント
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 明るい雰囲気で：反省会のような重い空気ではなく、笑い飛ばせるようにポップな雰囲気を目指す</li>
+                                            <li>• 個人ではなくプロセスにフォーカス：「誰がミスったか」ではなく、「どの段階でユーザー確認をしておけば防げたか」というプロセスの振り返りを行い、最後は「教訓」で締める</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+                                        <h5 class="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                            </svg>
+                                            ターゲット
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 失敗を恐れて手堅い（無難な）仕様に倒しがちなエンジニアやPM</li>
+                                            <li>• 「完璧なものを出さなきゃ」とプレッシャーを感じている若手メンバー</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案3 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案3
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">UIクリニック（公開相談会）</h4>
+                                        <p class="text-sm text-gray-600">開発中の画面や、「なんとなく使いにくいけど直し方がわからない」既存画面をスクリーンに映し、UXUIデザイナー（UXUIユニットメンバー）と開発者がその場で改善案をディスカッションする</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                                        <h5 class="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg>
+                                            目的
+                                        </h5>
+                                        <p class="text-sm text-gray-700">具体的な困りごとの解決と、デザイナー（UXUIユニットメンバー）の思考プロセス（なぜその修正が必要か）の共有</p>
+                                    </div>
+
+                                    <div class="bg-pink-50 rounded-xl p-4 border border-pink-100">
+                                        <h5 class="font-bold text-pink-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                            </svg>
+                                            ポイント
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 「ダメ出し」ではなく「治療（クリニック）」というポジティブなスタンスで行う</li>
+                                            <li>• Before/Afterがその場で見えるため、納得感が高い</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+                                        <h5 class="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                            </svg>
+                                            ターゲット
+                                        </h5>
+                                        <p class="text-sm text-gray-700">具体的な実装に悩むエンジニア、仕様を決めるPM<br>
+                                        <span class="text-purple-600 font-semibold">※実案件にて悩んだ・悩んでいるPJTがあれば、協力してもらうとよい</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案4 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案4
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">「推しUI / 惜しいUI」持ち寄り座談会</h4>
+                                        <p class="text-sm text-gray-600">自社プロダクトではなく、世の中にある普段使っているアプリやWebサービスについて、「ここの操作感が気持ちいい（推し）」「ここが使いづらくてイライラする（惜しい）」を語り合うライトな会</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                                        <h5 class="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg>
+                                            目的
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• ユーザー視点を取り戻す</li>
+                                            <li>• 自社製品だと角が立つ批評も、他社製品なら気楽に分析でき、言語化のトレーニングになる</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-pink-50 rounded-xl p-4 border border-pink-100">
+                                        <h5 class="font-bold text-pink-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                            </svg>
+                                            ポイント
+                                        </h5>
+                                        <ul class="text-sm text-gray-700 space-y-1 ml-6">
+                                            <li>• 「なぜ使いやすいのか？」の法則性を最後にデザイナーが解説すると、学びが深まる</li>
+                                            <li>• 自分だったらどういうUIにするのに！という意見を考えてもらう（言語化）</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-100">
+                                        <h5 class="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                            </svg>
+                                            ターゲット
+                                        </h5>
+                                        <p class="text-sm text-gray-700">全職種（新卒や若手も参加しやすい）</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案5 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案5
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">ヒューリスティック分析的な討論</h4>
+                                        <p class="text-sm text-gray-600">感じている良いUI、悪いUIの意見を言い合う<br>
+                                        <span class="text-gray-500">（案4とかぶる）</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案6 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案6
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">UI/UXに興味を持ったきっかけ</h4>
+                                        <p class="text-sm text-gray-600 mb-3">経験者・初心者それぞれの視点から語り合う</p>
+                                        <div class="space-y-2">
+                                            <div class="flex items-start gap-2 text-sm">
+                                                <span class="text-purple-600 font-bold">経験者:</span>
+                                                <span class="text-gray-700">自発的に課題を感じ、変えていこうとした話をする</span>
+                                            </div>
+                                            <div class="flex items-start gap-2 text-sm">
+                                                <span class="text-pink-600 font-bold">初心者:</span>
+                                                <span class="text-gray-700">なぜ興味を持ったのかと、YSDのUX/UIについて感じること</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 案7 -->
+                            <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-lg border border-white/40 hover:shadow-2xl transition-shadow">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                                        案7
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-black text-xl text-gray-900 mb-2">Figma、Figjam利用の楽しさ、面白さ、可能性について</h4>
+                                        <p class="text-sm text-gray-600">ツールの魅力を語り合い、活用の幅を広げる</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion -->
+                    <section class="mb-16">
+                        <div class="bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-700 text-white rounded-3xl p-8 sm:p-12 shadow-2xl">
+                            <h2 class="text-3xl font-black mb-6 text-center">おわりに</h2>
+                            <p class="text-lg leading-relaxed mb-6">
+                                これらのイベントは、<span class="font-bold">UXUIの知見を共有し</span>、<br>
+                                <span class="font-bold">組織全体のデザイン意識を高める</span>ことを目的としています。
+                            </p>
+                            <p class="text-lg leading-relaxed mb-8">
+                                研修で基礎を学び、座談会で実践的な知見を交換する。<br>
+                                この2つのアプローチで、YSDのUXUI活動をさらに推進していきます。<br>
+                                ぜひ、お気軽にご参加ください！
+                            </p>
+                            <div class="text-center">
+                                <p class="text-xl font-bold">開催が決まりましたら、あらためてご案内いたします</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Back to Top -->
+                    <div class="text-center">
+                        <a href="./index.html#columns" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-purple-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>トップページに戻る</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">UX</span>
+                        </div>
+                        <span class="text-xl font-bold">UXUI Labo</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        ヤマトシステム開発株式会社<br>
+                        📝 YSD UXUIユニット
+                    </p>
+                    <p class="text-sm text-gray-500">
+                        © 2025 Yamato System Development Co., Ltd. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

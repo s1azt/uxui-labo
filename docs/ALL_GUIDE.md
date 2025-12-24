@@ -31,7 +31,11 @@ git pull origin main
 # ④ ローカルブランチの確認・設定
 git branch
 git branch -c main
+git branch -M main
 
+# ④ ローカル起動テスト
+npx http-server ./docs
+Ctrl＋C で停止
 ```
 
 ---
