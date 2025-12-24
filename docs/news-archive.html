@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>お知らせ一覧 - UXUI Labo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- データファイルの読み込み（キャッシュ防止のため動的読み込み） -->
+    <script>
+        // キャッシュを回避するため、タイムスタンプ付きでデータファイルを読み込む
+        const timestamp = new Date().getTime();
+        document.write('<script src="./data/news.js?v=' + timestamp + '"><\/script>');
+    </script>
     <style>
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
@@ -105,8 +108,20 @@
             <!-- News Section -->
             <section class="py-12 relative z-10">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid gap-6">
-                        <!-- News Item 1 -->
+                    <!-- ニュースアイテムはJavaScriptで動的に生成されます -->
+                    <div id="news-container" class="grid gap-6"></div>
+
+                    <!-- Back to Top -->
+                    <div class="text-center mt-12">
+                        <a href="./index.html" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-purple-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>トップページに戻る</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
                         <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
                             <div class="flex flex-col sm:flex-row sm:items-center gap-4">
                                 <div class="flex-shrink-0">
@@ -245,7 +260,7 @@
 
                     <!-- Back to Top -->
                     <div class="text-center mt-12">
-                        <a href="./index.html#news" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-purple-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
+                        <a href="./index.html" class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-8 py-4 rounded-xl font-semibold text-purple-600 hover:bg-white/80 transition-all shadow-lg hover:shadow-xl border border-white/40">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
@@ -277,5 +292,62 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // お知らせのレンダリング関数（全件表示）
+        function renderAllNews() {
+            const container = document.getElementById('news-container');
+            if (!container || typeof newsData === 'undefined') {
+                console.error('newsData is not defined or container not found');
+                return;
+            }
+
+            container.innerHTML = newsData.map(news => {
+                const statusColors = {
+                    orange: 'bg-orange-100 text-orange-700',
+                    green: 'bg-green-100 text-green-700',
+                    blue: 'bg-blue-100 text-blue-700',
+                    purple: 'bg-purple-100 text-purple-700',
+                    indigo: 'bg-indigo-100 text-indigo-700'
+                };
+                
+                const statusClass = statusColors[news.statusColor] || statusColors.blue;
+                const isLink = news.link && news.link !== null;
+                const tag = isLink ? 'a' : 'div';
+                const hrefAttr = isLink ? `href="${news.link}"` : '';
+                const blockClass = isLink ? 'block' : '';
+                
+                return `
+                    <${tag} ${hrefAttr} class="${blockClass} bg-white/60 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-white/40 hover:border-blue-200 group">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div class="flex-shrink-0">
+                                <div class="text-sm font-semibold text-blue-600 mb-1">${news.date}</div>
+                                <span class="inline-block ${statusClass} px-3 py-1 rounded-full text-xs font-semibold">${news.status}</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-semibold">${news.category}</span>
+                                    <h3 class="font-bold text-gray-900 ${isLink ? 'group-hover:text-blue-600 transition-colors' : ''}">${news.title}</h3>
+                                </div>
+                                <p class="text-sm text-gray-600">${news.description}</p>
+                            </div>
+                            ${isLink ? `
+                            <div class="flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </${tag}>
+                `;
+            }).join('');
+        }
+
+        // ページ読み込み時に実行
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAllNews();
+        });
+    </script>
 </body>
 </html>

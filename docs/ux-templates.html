@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>UXテンプレート | UXUI Labo</title>
     <style>
         * {
@@ -598,6 +595,183 @@
             box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            color: #667eea;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-size: 2em;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: #4a5568;
+            font-size: 1.1em;
+        }
+
+        .contact-options {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-option {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-option:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .contact-option-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .contact-option-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-option-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .contact-option-title {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .contact-option-subtitle {
+            font-size: 0.95em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .contact-option-description {
+            color: #4a5568;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .contact-option-details {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+
+        .contact-option-details strong {
+            color: #2d3748;
+            display: block;
+            margin-bottom: 4px;
+        }
+
         @media (max-width: 768px) {
             .nav-logo-text {
                 font-size: 1.1em;
@@ -949,14 +1123,14 @@
             <div class="access-notice-content">
                 <div class="access-notice-title">Figmaアクセス権限について</div>
                 <div class="access-notice-text">
-                    各テンプレートの閲覧には、Figmaの利用権限が必要です。アクセス権限の設定や使い方については、<strong>UXUIユニットまでお問い合わせください</strong>。Googleチャット「UXユニット」スペースまたはメール（uxui-unit@nekonet.co.jp）でご連絡いただけます。
+                    各テンプレートの閲覧には、Figmaの利用権限が必要です。アクセス権限の設定や使い方については、<strong>UXUIユニットまでお問い合わせください</strong>。
                 </div>
             </div>
         </div>
 
         <!-- CTA Section -->
         <div class="cta-section">
-            <h2>🚀 実際のテンプレートを使ってみよう！</h2>
+            <h2>🚀 実際のテンプレートを使ってみよう!</h2>
             <p>すべてのテンプレートはFigma/FigJamで公開されています。<br>プロジェクトで自由にコピーして活用してください。</p>
             <a href="https://www.figma.com/board/batm4wZXITChxofXTAt3cu/UX%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88?node-id=0-1&t=H1nQVixrlxt4sTaY-1" target="_blank" class="cta-button">
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -964,13 +1138,111 @@
                 </svg>
                 Figmaでテンプレートを開く
             </a>
-            <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(102, 126, 234, 0.2);">
-                <p style="font-size: 0.95em; color: #4a5568;">
-                    📧 使い方がわからない場合や、プロジェクトでの活用支援が必要な場合は、<br>
-                    お気軽にUXユニットまでご連絡ください！
-                </p>
+        </div>
+
+        <!-- Contact Button Section -->
+        <div class="cta-section" style="margin-top: 40px; background: rgba(255, 255, 255, 0.95);">
+            <h2 style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">💬 お問い合わせ</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px; color: #4a5568;">
+                使い方がわからない場合や、プロジェクトでの活用支援が必要な場合は、<br>
+                お気軽にUXUIユニットまでご連絡ください!
+            </p>
+            <button onclick="openContactModal()" class="cta-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                UXUIユニットに相談する
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="modal-header">
+                <h2>💬 お問い合わせ方法を選択</h2>
+                <p>以下のいずれかの方法でUXUIユニットまでご連絡ください</p>
+            </div>
+
+            <div class="contact-options">
+                <!-- Google Chat Option -->
+                <a href="https://chat.google.com/room/AAQAxuH99as?cls=1" target="_blank" rel="noopener noreferrer" class="contact-option">
+                    <div class="contact-option-header">
+                        <div class="contact-option-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.31-3.86-.87l-.28-.15-2.76.47.47-2.76-.15-.28C4.87 14.68 4.56 13.38 4.56 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-option-title">Googleチャット</div>
+                            <div class="contact-option-subtitle">「UXユニット」スペース</div>
+                        </div>
+                    </div>
+                    <p class="contact-option-description">
+                        💬 気軽にご相談ください!質問や相談はチャットスペースでいつでも受け付けています。
+                    </p>
+                    <div class="contact-option-details">
+                        <strong>こんな時におすすめ:</strong>
+                        クイックな質問や相談、リアルタイムでのやり取り
+                    </div>
+                </a>
+
+                <!-- Email Option -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=uxui-unit@nekonet.co.jp&su=UXテンプレートに関する相談・問い合わせ" target="_blank" rel="noopener noreferrer" class="contact-option">
+                    <div class="contact-option-header">
+                        <div class="contact-option-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-option-title">メール</div>
+                            <div class="contact-option-subtitle">uxui-unit@nekonet.co.jp</div>
+                        </div>
+                    </div>
+                    <p class="contact-option-description">
+                        📧 詳細な内容や資料を添付したい場合はメールをご利用ください。
+                    </p>
+                    <div class="contact-option-details">
+                        <strong>UXUIユニット共用アドレス</strong>
+                        YSD-UXUIチーム運用[YSD]<br>
+                        <strong style="margin-top: 8px;">こんな時におすすめ:</strong>
+                        詳細な説明が必要な相談、ファイル添付が必要な場合
+                    </div>
+                </a>
             </div>
         </div>
     </div>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.id === 'contactModal') {
+                closeContactModal();
+            }
+        }
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+    </script>
 </body>
 </html>

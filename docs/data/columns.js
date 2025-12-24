@@ -23,19 +23,7 @@
 
 const columnsData = [
     {
-        date: "2025.11",
-        link: "./coknock-story.html",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
-        authorInitial: "吾",
-        authorName: "吾田 秀樹",
-        authorColor: "from-purple-500 to-pink-500",
-        title: "デザインシステム「Coknock」開発ストーリー",
-        description: "なぜ今、デザインシステムが必要なのか？YSDにおけるデザインシステム構築の背景、コンセプト、そして未来への展望を語ります。",
-        featured: true,
-        accentColor: "purple"
-    },
-    {
-        date: "2025.11",
+        date: "2025.12",
         link: "./column1.html",
         image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
         authorInitial: "堤",
@@ -43,11 +31,24 @@ const columnsData = [
         authorColor: "from-blue-500 to-indigo-500",
         title: "Figma Maker Collective Tokyo 2025 参加レポート",
         description: "AI時代のデザイナーの役割とは？Figmaの最新機能やデザインコミュニティの動向について、現地からレポートします。",
+        featured: true,
+        accentColor: "purple"
+    },
+    {
+        date: "2025.12",
+        link: "./coknock-story.html",
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        authorInitial: "吾",
+        authorName: "吾田 秀樹",
+        authorColor: "from-purple-500 to-pink-500",
+        title: "デザインシステム「Coknock」開発ストーリー",
+        description: "なぜ今、デザインシステムが必要なのか？YSDにおけるデザインシステム構築の背景、コンセプト、そして未来への展望を語ります。",
         featured: false,
         accentColor: "blue"
     },
+
     {
-        date: "2025.11",
+        date: "2025.12",
         link: "./column3.html",
         image: "https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
         authorInitial: "磯",

@@ -8,9 +8,13 @@
     <meta http-equiv="Expires" content="0">
     <title>UXUI Labo - YSD UX浸透活動ポータル</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- データファイルの読み込み -->
-    <script src="./data/news.js"></script>
-    <script src="./data/columns.js"></script>
+    <!-- データファイルの読み込み（キャッシュ防止のため動的読み込み） -->
+    <script>
+        // キャッシュを回避するため、タイムスタンプ付きでデータファイルを読み込む
+        const timestamp = new Date().getTime();
+        document.write('<script src="./data/news.js?v=' + timestamp + '"><\/script>');
+        document.write('<script src="./data/columns.js?v=' + timestamp + '"><\/script>');
+    </script>
     <style>
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
@@ -62,6 +66,183 @@
 
         .tab-content.active {
             display: block;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            color: #3b82f6;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-size: 2em;
+            font-weight: 600;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: #4b5563;
+            font-size: 1.1em;
+        }
+
+        .contact-options {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-option {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-option:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .contact-option-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .contact-option-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-option-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .contact-option-title {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .contact-option-subtitle {
+            font-size: 0.95em;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .contact-option-description {
+            color: #4b5563;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .contact-option-details {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #4b5563;
+        }
+
+        .contact-option-details strong {
+            color: #1f2937;
+            display: block;
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -148,8 +329,10 @@
                                 <p class="text-sm font-semibold">Yamato System Development</p>
                             </div>
                         </div>
-
-
+                        
+                        <!-- ★★★ グループシステム部ロゴ START ★★★ -->
+                        <!-- 他のページにコピペする場合は、この部分をコピーしてください -->
+                        <!-- PC時は横並び、スマホ時は縦並び -->
                         <div class="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 mb-6">
                             <!-- UXUI Labo タイトル -->
                             <div class="lg:text-right">
@@ -182,7 +365,8 @@
                         <p class="text-base sm:text-lg mb-10 text-white/90 font-medium max-w-2xl mx-auto">
                             ユーザー中心設計の組織文化醸成
                         </p>
-
+                        <!-- ★★★ グループシステム部ロゴ END ★★★ -->
+                        
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href="#mission" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105">
                                 活動内容を見る
@@ -528,7 +712,7 @@
                     <!-- Purpose Statement -->
                     <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/40 shadow-xl">
                         <p id="purpose-text" class="text-center text-gray-700 leading-relaxed">
-                            自社プロダクト開発においてUXの考え方を浸透させUI/UXデザインの具体的な方法論やマインドセットを段階的に習得することで、プロダクト価値およびYSDブランドの向上に寄与できる力を育成します。
+                            自社プロダクト開発においてUXの考え方を浸透させUI/UXデザインの具��的な方法論やマインドセットを段階的に習得することで、プロダクト価値およびYSDブランドの向上に寄与できる力を育成します。
                         </p>
                     </div>
 
@@ -765,84 +949,44 @@
             <section id="contact" class="py-20 bg-transparent relative z-10">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-white/40 shadow-2xl">
-                        <div class="text-center mb-12">
+                        <div class="text-center mb-8">
                             <h2 class="text-4xl font-black text-gray-900 mb-4">お問い合わせ</h2>
-                            <p class="text-xl text-gray-600">UX活動に関するご相談・ご質問はこちら</p>
+                            <p class="text-xl text-gray-600 mb-8">UX活動に関するご相談・ご質問はこちら</p>
+                            <button onclick="openContactModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:from-blue-600 hover:to-indigo-700 transition-all shadow-xl hover:shadow-2xl hover:scale-105">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                UXUIユニットに相談する
+                            </button>
                         </div>
 
-                        <div class="space-y-6">
-                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900 mb-2">メール</h3>
-                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=uxui-unit@nekonet.co.jp&su=UXUIに関する相談・問い合わせ" 
-                                           target="_blank" 
-                                           rel="noopener noreferrer" 
-                                           class="text-blue-600 hover:text-blue-700 font-semibold">
-                                            uxui-unit@nekonet.co.jp
-                                        </a>
-                                        <p class="text-sm text-gray-600 mt-2">UXUIユニット共用アドレス:YSD-UXUIチーム運用[YSD]</p>
-                                    </div>
+                        <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
                                 </div>
-                            </div>
-
-                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900 mb-2">Googleチャット</h3>
-                                        <p class="text-gray-700 mb-3">「UXユニット」スペース</p>
-                                        <p class="text-sm text-gray-600 mb-4">💬 気軽にご相談ください!質問や相談はチャットスペースでいつでも受け付けています。</p>
-                                        <a href="https://chat.google.com/room/AAQAxuH99as?cls=1" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-5 py-3 rounded-lg font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                            </svg>
-                                            <span>チャットスペースで相談する</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900 mb-2">対応内容</h3>
-                                        <ul class="space-y-2 text-sm text-gray-700">
-                                            <li class="flex items-start gap-2">
-                                                <span class="text-blue-600 mt-1">•</span>
-                                                <span>UI/UXレビュー依頼</span>
-                                            </li>
-                                            <li class="flex items-start gap-2">
-                                                <span class="text-blue-600 mt-1">•</span>
-                                                <span>デザインシステム利用相談</span>
-                                            </li>
-                                            <li class="flex items-start gap-2">
-                                                <span class="text-blue-600 mt-1">•</span>
-                                                <span>研修・勉強会の開催希望</span>
-                                            </li>
-                                            <li class="flex items-start gap-2">
-                                                <span class="text-blue-600 mt-1">•</span>
-                                                <span>その他UX活動に関するご相談</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-900 mb-2">対応内容</h3>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-blue-600 mt-1">•</span>
+                                            <span>UI/UXレビュー依頼</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-blue-600 mt-1">•</span>
+                                            <span>デザインシステム利用相談</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-blue-600 mt-1">•</span>
+                                            <span>研修・勉強会の開催希望</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-blue-600 mt-1">•</span>
+                                            <span>その他UX活動に関するご相談</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -850,6 +994,70 @@
                 </div>
             </section>
         </main>
+
+        <!-- Contact Modal -->
+        <div id="contactModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeContactModal()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <div class="modal-header">
+                    <h2>💬 お問い合わせ方法を選択</h2>
+                    <p>以下のいずれかの方法でUXUIユニットまでご連絡ください</p>
+                </div>
+
+                <div class="contact-options">
+                    <!-- Google Chat Option -->
+                    <a href="https://chat.google.com/room/AAQAxuH99as?cls=1" target="_blank" rel="noopener noreferrer" class="contact-option">
+                        <div class="contact-option-header">
+                            <div class="contact-option-icon">
+                                <svg fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.31-3.86-.87l-.28-.15-2.76.47.47-2.76-.15-.28C4.87 14.68 4.56 13.38 4.56 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-option-title">Googleチャット</div>
+                                <div class="contact-option-subtitle">「UXユニット」スペース</div>
+                            </div>
+                        </div>
+                        <p class="contact-option-description">
+                            💬 気軽にご相談ください!質問や相談はチャットスペースでいつでも受け付けています。
+                        </p>
+                        <div class="contact-option-details">
+                            <strong>こんな時におすすめ:</strong>
+                            クイックな質問や相談、リアルタイムでのやり取り
+                        </div>
+                    </a>
+
+                    <!-- Email Option -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=uxui-unit@nekonet.co.jp&su=UXUIに関する相談・問い合わせ" target="_blank" rel="noopener noreferrer" class="contact-option">
+                        <div class="contact-option-header">
+                            <div class="contact-option-icon">
+                                <svg fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-option-title">メール</div>
+                                <div class="contact-option-subtitle">uxui-unit@nekonet.co.jp</div>
+                            </div>
+                        </div>
+                        <p class="contact-option-description">
+                            📧 詳細な内容や資料を添付したい場合はメールをご利用ください。
+                        </p>
+                        <div class="contact-option-details">
+                            <strong>UXUIユニット共用アドレス</strong>
+                            YSD-UXUIチーム運用[YSD]<br>
+                            <strong style="margin-top: 8px;">こんな時におすすめ:</strong>
+                            詳細な説明が必要な相談、ファイル添付が必要な場合
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer class="bg-gray-900 text-white py-12">
@@ -1049,7 +1257,7 @@
                 title: 'UIUXビギナー',
                 emoji: '🐣',
                 range: 'UI課題・画面サンプル',
-                skills: ['Figmaなどのデザインツールの基本操作', 'システムの課題に気づく'],
+                skills: ['Figmaなどのデ���インツールの基本操作', 'システムの課題に気づく'],
                 keywords: ['Figma', 'UIUXに対する興味関心']
             },
             {
@@ -1209,6 +1417,30 @@
             renderSkills(engineerSkills, 'engineer-content');
             renderNews();
             renderColumns();
+        });
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.id === 'contactModal') {
+                closeContactModal();
+            }
+        }
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeContactModal();
+            }
         });
     </script>
 </body>
