@@ -67,7 +67,7 @@ const columnsData = [
         authorName: "吾田 秀樹",
         authorColor: "from-green-500 to-emerald-500",
         title: "UXUIへイベント",
-        description: "たくさんのイベントを考えています",
+        description: "UX推進のためにたくさんのイベントを考えています",
         featured: false,
         accentColor: "pink"
     }
