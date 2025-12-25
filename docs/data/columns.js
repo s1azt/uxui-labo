@@ -58,19 +58,19 @@ const columnsData = [
         description: "全社的に高いUX/UI関心度を確認。アンケート結果が示すデザインシステム導入の好機とこれからの展開について。",
         featured: false,
         accentColor: "green"
-    },
-     {
-        date: "2026.02",
-        link: "./column4.html",
-        image: "https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-        authorInitial: "吾",
-        authorName: "吾田 秀樹",
-        authorColor: "from-green-500 to-emerald-500",
-        title: "UXUIへイベント",
-        description: "UX推進のためにたくさんのイベントを考えています",
-        featured: false,
-        accentColor: "pink"
     }
+//     {
+//        date: "2026.02",
+//        link: "./column4.html",
+//        image: "https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+//        authorInitial: "吾",
+//        authorName: "吾田 秀樹",
+//        authorColor: "from-green-500 to-emerald-500",
+//        title: "UXUIへイベント",
+//        description: "UX推進のためにたくさんのイベントを考えています",
+//        featured: false,
+//        accentColor: "pink"
+//    }
 ];
 
 // ========================================

@@ -46,16 +46,6 @@ const newsData = [
         description: "全社的にUX/UIの関心が非常に高いことが判明。デザインシステム導入の親和性を確認しました。",
         link: "./survey-results.html"
     },    
-    {
-        date: "2026.02",
-        status: "完了",
-        statusColor: "blue",
-        category: "アンケート結果",
-        title: "UXUIへの意識アンケート結果を公開",
-        description: "全社的にUX/UIの関心が非常に高いことが判明。デザインシステム導入の親和性を確認しました。",
-        link: "./survey-results.html"
-    }
-    
 ];
 
 // ========================================
