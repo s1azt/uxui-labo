@@ -6,5 +6,4 @@
   - [お知らせ・コラムの更新方法（簡易版）](./docs/README_UPDATE_SIMPLE.md)
 
 ## 関連URL
-- [Backlog](https://ncdc-all.backlog.com/document/YSD_UXUI_DESIGN_TEAM/019a32d94b107082af20fb01048cc0fd)
-- 
+- [Backlog UIUX浸透施策](https://ncdc-all.backlog.com/document/YSD_UXUI_DESIGN_TEAM/019a32d94b107082af20fb01048cc0fd)
