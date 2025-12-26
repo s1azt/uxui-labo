@@ -1,11 +1,10 @@
-# uxui-labo
-UXUI浸透プロジェクト情報発信サイト
+# UXUI推進ポータル
+## ドキュメント
+- 各種手順
+  - [UXUI浸透活動ポータル コンテンツ更新・追加マニュアル](./docs/ALL_GUIDE.md)
+  - [UXUI Labo サイト更新ガイド](./docs/UPDATE_GUIDE.md)
+  - [お知らせ・コラムの更新方法（簡易版）](./docs/README_UPDATE_SIMPLE.md)
 
-  This is a code bundle for UXUIニュースレター作成. The original project is available at https://www.figma.com/design/2povYAnhYKKkzG8w2iyGy5/UXUI%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%AC%E3%82%BF%E3%83%BC%E4%BD%9C%E6%88%90.
-
-  ## Running the code
-
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
-  
+## 関連URL
+- [Backlog](https://ncdc-all.backlog.com/document/YSD_UXUI_DESIGN_TEAM/019a32d94b107082af20fb01048cc0fd)
+- 
